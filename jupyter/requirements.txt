@@ -1,0 +1,5 @@
+pandas
+pyarrow
+grpcio
+protobuf<5
+grpcio_status

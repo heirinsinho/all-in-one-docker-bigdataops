@@ -1,0 +1,252 @@
+services:
+  spark-master:
+    container_name: spark-master
+    image: base-spark:latest
+    entrypoint: [ './entrypoint.sh', 'master' ]
+    volumes:
+      - ./spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
+    env_file:
+      - spark/.env
+    ports:
+      - 8080:8080
+      - 7077:7077
+
+  spark-history-server:
+    container_name: spark-history-server
+    image: base-spark:latest
+    restart: always
+    entrypoint: [ './entrypoint.sh', 'history' ]
+    depends_on:
+      - spark-master
+      - resourcemanager
+    env_file:
+      - ./spark/.env
+    volumes:
+      - ./spark/spark-defaults-history.conf:/opt/spark/conf/spark-defaults.conf
+    ports:
+      - 18080:18080
+
+  spark-worker:
+    image: base-spark:latest
+    entrypoint: [ './entrypoint.sh', 'worker' ]
+    depends_on:
+      - spark-master
+    env_file:
+      - spark/.env
+    volumes:
+      - ./spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
+
+  namenode:
+    build: ./hadoop/namenode
+    container_name: namenode
+    restart: always
+    ports:
+      - 9870:9870
+      - 9000:9000
+    volumes:
+      - ./hadoop/namenode/data:/hadoop/dfs/name
+      - ./hadoop/applications:/hadoop/applications
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop/.env
+
+  datanode1:
+    build: ./hadoop/datanode
+    container_name: datanode1
+    restart: always
+    ports:
+      - 9864:9864
+    volumes:
+      - ./hadoop/datanode/data/datanode1:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - ./hadoop/.env
+
+  datanode2:
+    build: ./hadoop/datanode
+    container_name: datanode2
+    restart: always
+    volumes:
+      - ./hadoop/datanode/data/datanode2:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - ./hadoop/.env
+
+  resourcemanager:
+    build: ./hadoop/resourcemanager
+    container_name: yarn
+    ports:
+      - 8088:8088
+    restart: always
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+    environment:
+      SERVICE_PRECONDITION: 'namenode:9870 datanode1:9864 datanode2:9864'
+    env_file:
+      - ./hadoop/.env
+
+  nodemanager:
+    build: ./hadoop/nodemanager
+    container_name: nodemanager
+    ports:
+      - 8042:8042
+    restart: always
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+      - resourcemanager
+    environment:
+      SERVICE_PRECONDITION: 'namenode:9870 datanode1:9864 datanode2:9864 resourcemanager:8088'
+    env_file:
+      - ./hadoop/.env
+
+  historyserver:
+    build: ./hadoop/historyserver
+    container_name: historyserver
+    ports:
+      - 8188:8188
+    restart: always
+    volumes:
+      - ./hadoop/historyserver/data:/hadoop/yarn/timeline
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+      - resourcemanager
+    environment:
+      SERVICE_PRECONDITION: 'namenode:9870 datanode1:9864 datanode2:9864 resourcemanager:8088'
+    env_file:
+      - ./hadoop/.env
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    ports:
+      - 2181:2181
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    restart: always
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_BROKER_ID: 2
+
+  airflow-standalone:
+    container_name: airflow
+    build:
+      context: .
+      dockerfile: airflow/Dockerfile
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - airflow db init &&
+        airflow users create --role Admin --username admin --password admin --email admin@airflow.com --firstname admin --lastname admin &&
+        airflow connections add 'spark_docker' --conn-type spark --conn-host spark://spark-master --conn-port 7077 &&
+        airflow connections add 'ssh_hadoop' --conn-type ssh --conn-host namenode --conn-port 22 --conn-login root --conn-password root123 &&
+        airflow standalone
+    ports:
+      - 8090:8080
+    volumes:
+      - ./airflow/data:/opt/airflow/data
+      - ./airflow/dags:/opt/airflow/dags
+
+  jupyter:
+    image: base-jupyter:latest
+    container_name: jupyter
+    ports:
+      - 8888:8888
+      - 4040:4040
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    depends_on:
+      - spark-master
+      - spark-history-server
+    volumes:
+      - ./jupyter/notebooks:/home/jovyan
+
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    container_name: postgres
+    environment:
+      POSTGRES_DB: 'metastore_db'
+      POSTGRES_USER: 'hive'
+      POSTGRES_PASSWORD: 'password'
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./hive/data:/var/lib/postgresql/data
+
+  metastore:
+    image: apache/hive:4.0.0
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    container_name: metastore
+    environment:
+      DB_DRIVER: postgres
+      VERBOSE: "true"
+      SERVICE_NAME: 'metastore'
+    ports:
+      - '9083:9083'
+    volumes:
+      - ./hive/warehouse:/opt/hive/data/warehouse
+      - ./hive/postgresql-42.7.4.jar:/opt/hive/lib/postgres.jar
+      - ./hive/hive-site.xml:/opt/hive/conf/hive-site.xml
+
+  hiveserver2:
+    image: apache/hive:4.0.0
+    depends_on:
+      - metastore
+    restart: unless-stopped
+    container_name: hiveserver2
+    environment:
+      SERVICE_OPTS: "-Dhive:metastore:uris=thrift://metastore:9083"
+      VERBOSE: "true"
+      SERVICE_NAME: 'hiveserver2'
+    ports:
+      - '10000:10000'
+      - '10002:10002'
+    volumes:
+      - ./hive/warehouse:/opt/hive/data/warehouse
+
+  huedb:
+    image: postgres:16
+    volumes:
+      - ./hue/data:/var/lib/postgresl/data/
+    ports:
+      - 5432
+    environment:
+      POSTGRES_DB: 'hue'
+      POSTGRES_USER: 'hue'
+      POSTGRES_PASSWORD: 'hue'
+      SERVICE_PRECONDITION: "namenode:9870 datanode1:9864 datanode2:9864 resourcemanager:8088 metastore:9083"
+
+  hue:
+    image: gethue/hue:latest
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode1:9864 datanode2:9864 resourcemanager:8088 metastore:9083"
+    ports:
+      - "9999:8888"
+    volumes:
+      - ./hue/hue.ini:/usr/share/hue/desktop/conf/hue-overrides.ini
+    depends_on:
+      - huedb
