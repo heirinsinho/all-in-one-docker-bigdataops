@@ -17,14 +17,15 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_HOME=/usr/lib/jvm/temurin-8-jdk-amd64/
+ARG TARGETARCH
+ENV JAVA_HOME=/usr/lib/jvm/temurin-8-jdk-${TARGETARCH}/
 
 RUN curl -O https://downloads.apache.org/hadoop/common/KEYS
 
 RUN gpg --import KEYS
 
-ENV HADOOP_VERSION 3.3.6
-ENV HADOOP_URL https://downloads.apache.org/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
+ENV HADOOP_VERSION=3.3.6
+ENV HADOOP_URL=https://downloads.apache.org/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
 RUN set -x \
     && curl -fSL "$HADOOP_URL" -o /tmp/hadoop.tar.gz \
     && curl -fSL "$HADOOP_URL.asc" -o /tmp/hadoop.tar.gz.asc \
@@ -42,10 +43,10 @@ ENV HADOOP_HOME=/opt/hadoop-$HADOOP_VERSION
 ENV HADOOP_CONF_DIR=/etc/hadoop
 ENV MULTIHOMED_NETWORK=1
 ENV USER=root
-ENV PATH $HADOOP_HOME/bin/:$PATH
+ENV PATH=$HADOOP_HOME/bin/:$PATH
 
-COPY ./hadoop/base/entrypoint.sh /entrypoint.sh
+ADD ./entrypoint.sh ./entrypoint.sh
 
-RUN chmod a+x /entrypoint.sh
+RUN chmod a+x ./entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]

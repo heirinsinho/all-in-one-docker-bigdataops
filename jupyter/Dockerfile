@@ -23,7 +23,7 @@ WORKDIR /home/jovyan
 ARG spark_version
 ENV PYSPARK_VERSION="pyspark==${spark_version}"
 
-COPY ./jupyter/requirements.txt ./requirements.txt
+COPY ./requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 RUN pip install ${PYSPARK_VERSION}
 

@@ -1,0 +1,1 @@
+(Invoke-WebRequest -Uri "https://downloads.apache.org/spark/" -UseBasicParsing).Content | Select-String -Pattern "spark-3\.\d+\.\d+" | ForEach-Object { $_.Matches.Value -replace "spark-" } | Sort-Object { $_ -split '\.' | ForEach-Object {[int]$_} } | Select-Object -First 1

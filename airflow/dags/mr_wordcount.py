@@ -57,6 +57,9 @@ with DAG('usgs',
         command='source /etc/profile.d/env_vars.sh && hadoop jar /hadoop/applications/WordCount.jar hadoop.applications.WordCount /data/input/word_count /data/output/word_count',
         ssh_conn_id='ssh_hadoop',
         dag=dag,
+        conn_timeout=360,
+        cmd_timeout=360,
+        banner_timeout=360
     )
 
     create_jar >> submit_file >> ssh_mapreduce

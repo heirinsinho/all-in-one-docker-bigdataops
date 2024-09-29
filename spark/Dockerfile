@@ -16,7 +16,9 @@ RUN apt-get update && \
 
 ENV SPARK_HOME=${SPARK_HOME:-"/opt/spark"}
 ENV HADOOP_HOME=${HADOOP_HOME:-"/opt/hadoop"}
-ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/"
+
+ARG TARGETARCH
+ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-${TARGETARCH}/"
 
 RUN mkdir -p ${HADOOP_HOME} && mkdir -p ${SPARK_HOME}
 WORKDIR ${SPARK_HOME}
@@ -28,8 +30,11 @@ RUN curl $SPARK_URL -o ${SPARK_VERSION}-bin-hadoop3.tgz \
  && tar xvzf ${SPARK_VERSION}-bin-hadoop3.tgz --directory /opt/spark --strip-components 1 \
  && rm -rf ${SPARK_VERSION}-bin-hadoop3.tgz
 
-COPY ./spark/requirements.txt ./requirements.txt
+ADD ./requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
+
+ENV PYSPARK_VERSION="pyspark==${spark_version}"
+RUN pip install ${PYSPARK_VERSION}
 
 ENV PATH="/opt/spark/sbin:/opt/spark/bin:${PATH}"
 ENV SPARK_HOME="/opt/spark"
@@ -48,7 +53,7 @@ RUN chmod u+x /opt/spark/sbin/* && \
 
 ENV PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 
-COPY ./spark/entrypoint.sh ./entrypoint.sh
+ADD ./entrypoint.sh ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 
 RUN mkdir -p $SPARK_LOG_DIR && \

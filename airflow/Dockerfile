@@ -1,6 +1,6 @@
 FROM apache/airflow:2.7.3-python3.11
 
-COPY ./airflow/requirements.txt requirements.txt
+COPY ./requirements.txt requirements.txt
 USER root
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \

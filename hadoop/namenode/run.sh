@@ -21,4 +21,6 @@ if [ "`ls -A $namedir`" == "" ]; then
   $HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode -format $CLUSTER_NAME
 fi
 
+hadoop fs -mkdir -p /shared/spark-logs
+
 $HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode

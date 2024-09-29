@@ -1,13 +1,12 @@
 FROM base-hadoop:latest
 
 ENV HDFS_CONF_dfs_namenode_name_dir=file:///hadoop/dfs/name
+
 RUN mkdir -p /hadoop/dfs/name
 VOLUME /hadoop/dfs/name
 
 COPY ./run.sh /run.sh
 RUN chmod a+x /run.sh
-
-RUN hadoop fs -mkdir -p /shared/spark-logs
 
 RUN mkdir /var/run/sshd
 RUN echo 'root:root123' | chpasswd

@@ -37,6 +37,7 @@ services:
       - ./spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
 
   namenode:
+    platform: linux/amd64
     build: ./hadoop/namenode
     container_name: namenode
     restart: always
@@ -52,11 +53,10 @@ services:
       - ./hadoop/.env
 
   datanode1:
+    platform: linux/amd64
     build: ./hadoop/datanode
     container_name: datanode1
     restart: always
-    ports:
-      - 9864:9864
     volumes:
       - ./hadoop/datanode/data/datanode1:/hadoop/dfs/data
     environment:
@@ -65,6 +65,7 @@ services:
       - ./hadoop/.env
 
   datanode2:
+    platform: linux/amd64
     build: ./hadoop/datanode
     container_name: datanode2
     restart: always
@@ -76,6 +77,7 @@ services:
       - ./hadoop/.env
 
   resourcemanager:
+    platform: linux/amd64
     build: ./hadoop/resourcemanager
     container_name: yarn
     ports:
@@ -91,6 +93,7 @@ services:
       - ./hadoop/.env
 
   nodemanager:
+    platform: linux/amd64
     build: ./hadoop/nodemanager
     container_name: nodemanager
     ports:
@@ -107,6 +110,7 @@ services:
       - ./hadoop/.env
 
   historyserver:
+    platform: linux/amd64
     build: ./hadoop/historyserver
     container_name: historyserver
     ports:
@@ -152,8 +156,8 @@ services:
   airflow-standalone:
     container_name: airflow
     build:
-      context: .
-      dockerfile: airflow/Dockerfile
+      context: ./airflow
+      dockerfile: Dockerfile
     entrypoint: /bin/bash
     command:
       - -c
