@@ -1,8 +1,8 @@
-OS := $(shell uname -s || echo "Windows")
+OS := $(shell uname -s || echo "MSYS")
 
 # Check if we are on Windows (CMD or PowerShell)
-ifeq ($(OS), "Windows")
-SPARK_CMD = powershell -NonInteractive -ExecutionPolicy Bypass -file ".\get_spark_version.ps1"
+ifneq ($(shell echo $(OS) | grep -E '^MSYS'), '')
+SPARK_CMD := powershell -NonInteractive -ExecutionPolicy Bypass -file ".\get_spark_version.ps1"
 else
 SHELL := "/bin/sh"
 SPARK_CMD := curl -s https://downloads.apache.org/spark/ | grep -o 'spark-3\.[0-9]*\.[0-9]*' | sort -V | head -1 | sed "s/spark-//g"
