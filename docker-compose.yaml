@@ -173,6 +173,7 @@ services:
       - ./airflow/dags:/opt/airflow/dags
 
   jupyter:
+    platform: linux/amd64
     image: base-jupyter:latest
     container_name: jupyter
     ports:
