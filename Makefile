@@ -27,7 +27,7 @@ build-base-hadoop:
 build-all: build-spark build-jupyter build-base-hadoop
 
 ensure-spark-logs:
-	@sleep 5
+	@sleep 35
 	@docker exec namenode hdfs dfsadmin -safemode forceExit
 	@docker exec namenode hadoop fs -mkdir -p /shared/spark-logs
 
