@@ -6,7 +6,7 @@ services:
     volumes:
       - ./spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
     env_file:
-      - spark/.env
+      - ./spark/.env
     ports:
       - 8080:8080
       - 7077:7077
@@ -35,6 +35,11 @@ services:
       - spark/.env
     volumes:
       - ./spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
+    deploy:
+      resources:
+        limits:
+          cpus: 4.0
+          memory: 5g
 
   namenode:
     platform: linux/amd64
@@ -153,7 +158,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_BROKER_ID: 2
 
-  airflow-standalone:
+  airflow:
     container_name: airflow
     build:
       context: ./airflow
@@ -183,11 +188,11 @@ services:
       - JUPYTER_ENABLE_LAB=yes
     depends_on:
       - spark-master
-      - spark-history-server
     volumes:
-      - ./jupyter/notebooks:/home/jovyan
+      - ./jupyter/notebooks:/home/jovyan/notebooks
+      - ./jupyter/data:/home/jovyan/data
 
-  postgres:
+  postgres-hive:
     image: postgres:16
     restart: unless-stopped
     container_name: postgres
@@ -203,7 +208,7 @@ services:
   metastore:
     image: apache/hive:4.0.0
     depends_on:
-      - postgres
+      - postgres-hive
     restart: unless-stopped
     container_name: metastore
     environment:

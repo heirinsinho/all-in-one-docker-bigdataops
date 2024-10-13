@@ -1,4 +1,4 @@
-FROM base-hadoop:latest
+FROM local-base-hadoop:latest
 
 ENV HDFS_CONF_dfs_datanode_data_dir=file:///hadoop/dfs/data
 RUN mkdir -p /hadoop/dfs/data

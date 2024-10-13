@@ -1,4 +1,4 @@
-FROM base-hadoop:latest
+FROM local-base-hadoop:latest
 
 ENV HDFS_CONF_dfs_namenode_name_dir=file:///hadoop/dfs/name
 

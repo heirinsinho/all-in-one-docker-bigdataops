@@ -166,8 +166,6 @@ cython_debug/
 /spark/apps/
 /spark/data/
 /spark/logs/
-/jupyter/notebooks/*
-!/jupyter/notebooks/*.ipynb
 .idea
 /hive/data/
 /hive/warehouse/

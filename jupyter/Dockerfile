@@ -1,7 +1,7 @@
 FROM jupyter/base-notebook:x86_64-python-3.11.6
 
 USER root
-RUN apt-get update \
+RUN dpkg --configure -a && apt-get update && apt-get upgrade -y \
   && apt-get install -y --no-install-recommends curl gcc openjdk-11-jdk
 
 ENV SPARK_HOME=${SPARK_HOME:-"/opt/spark"}
