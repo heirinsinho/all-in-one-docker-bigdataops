@@ -46,6 +46,9 @@ ENV SPARK_LOG_DIR="/opt/spark/logs"
 ENV SPARK_MASTER_LOG="/opt/spark/logs/spark-master.out"
 ENV SPARK_WORKER_LOG="/opt/spark/logs/spark-worker.out"
 
+# Set SPARK_EXECUTOR_ID to the hostname
+RUN echo "export SPARK_EXECUTOR_ID=\$(hostname)" >> /opt/spark/conf/spark-env.sh
+
 USER root
 
 RUN chmod u+x /opt/spark/sbin/* && \
