@@ -44,8 +44,9 @@ clean-up:
 start-spark:
 	make build-spark
 	make build-jupyter
+	make build-base-hadoop
 	@echo "Starting Spark and Jupyter services..."
-	@docker-compose up -d --force-recreate --build --scale spark-worker=2 spark-master spark-worker jupyter &> /dev/null || exit 1
+	@docker-compose up -d --force-recreate --build --scale spark-worker=2 spark-master spark-worker jupyter namenode datanode1 datanode2 &> /dev/null || exit 1
 	make clean-up
 
 start-hadoop:

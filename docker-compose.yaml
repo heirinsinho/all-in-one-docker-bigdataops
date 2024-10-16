@@ -38,8 +38,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: 4.0
-          memory: 5g
+          cpus: '4'
+          memory: '5g'
 
   namenode:
     platform: linux/amd64
