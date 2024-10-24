@@ -53,8 +53,8 @@ RUN chmod u+x /opt/spark/sbin/* && \
 
 ENV PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 
-ADD ./entrypoint.sh ./entrypoint.sh
-RUN chmod +x ./entrypoint.sh
+ADD ./entrypoint.sh $SPARK_HOME/entrypoint.sh
+RUN chmod +x $SPARK_HOME/entrypoint.sh
 
 RUN mkdir -p $SPARK_LOG_DIR && \
 touch $SPARK_MASTER_LOG && \
