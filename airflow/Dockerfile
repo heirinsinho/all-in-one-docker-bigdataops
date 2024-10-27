@@ -20,4 +20,6 @@ RUN export JAVA_HOME
 USER airflow
 RUN pip install -r requirements.txt
 
+COPY dags/utils/utils.py utils.py
+
 CMD ["webserver"]

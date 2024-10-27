@@ -1,0 +1,69 @@
+{
+  "dataflows": [
+    {
+      "name": "example-dataflow",
+      "sources": [
+        {
+          "name": "person_inputs",
+          "path": "/data/input/test/*",
+          "format": "JSON"
+        }
+      ],
+      "transformations": [
+        {
+          "name": "validation",
+          "type": "validate_fields",
+          "params": {
+            "input": "person_inputs",
+            "validations": [
+              {
+                "field": "office",
+                "validations": [
+                  "notEmpty"
+                ]
+              },
+              {
+                "field": "age",
+                "validations": [
+                  "notNull"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "ok_with_date",
+          "type": "add_fields",
+          "params": {
+            "input": "validation_ok",
+            "addFields": [
+              {
+                "name": "dt",
+                "function": "current_timestamp"
+              }
+            ]
+          }
+        }
+      ],
+      "sinks": [
+        {
+          "input": "ok_with_date",
+          "name": "raw-ok",
+          "topics": [
+            "person"
+          ],
+          "format": "KAFKA"
+        },
+        {
+          "input": "validation_ko",
+          "name": "raw-ko",
+          "paths": [
+            "/data/output/discards/person"
+          ],
+          "format": "JSON",
+          "saveMode": "OVERWRITE"
+        }
+      ]
+    }
+  ]
+}
