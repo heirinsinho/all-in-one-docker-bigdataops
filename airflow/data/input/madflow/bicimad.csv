@@ -1,0 +1,228 @@
+id;name;light;number;address;activate;no_available;total_bases;dock_bikes;free_bases;reservations_count;geometry;datetime
+1;Puerta del Sol A;2;1a;Puerta del Sol nº 1;1;0;30;16;11;0;{'type': 'Point', 'coordinates': [-3.7018341, 40.4172137]};2020-12-13T12:55:03.723690
+2;Puerta del Sol B;2;1b;Puerta del Sol nº 1;1;0;30;15;12;0;{'type': 'Point', 'coordinates': [-3.701602938060457, 40.41731271011562]};2020-12-13T12:55:03.723690
+3;Miguel Moya;1;2;Calle Miguel Moya nº 1;1;0;24;17;7;0;{'type': 'Point', 'coordinates': [-3.7058415, 40.4205886]};2020-12-13T12:55:03.723690
+4;Plaza Conde Suchil;2;3;Plaza del Conde Suchil nº 2-4;1;0;18;6;10;0;{'type': 'Point', 'coordinates': [-3.7069171, 40.4302937]};2020-12-13T12:55:03.723690
+5;Malasaña;0;4;Calle Manuela Malasaña nº 5;1;0;24;1;21;0;{'type': 'Point', 'coordinates': [-3.7025875, 40.4285524]};2020-12-13T12:55:03.723690
+6;Fuencarral;0;5;Calle Fuencarral nº 108;1;0;27;3;19;2;{'type': 'Point', 'coordinates': [-3.70205, 40.42852]};2020-12-13T12:55:03.723690
+7;Colegio Arquitectos;2;6;Calle Hortaleza nº 63;1;0;24;7;16;0;{'type': 'Point', 'coordinates': [-3.698447, 40.424148]};2020-12-13T12:55:03.723690
+8;Hortaleza;1;7;Calle Hortaleza nº 75;1;0;21;14;5;0;{'type': 'Point', 'coordinates': [-3.6977715, 40.4251906]};2020-12-13T12:55:03.723690
+9;Alonso Martínez;2;8;Plaza de Alonso Martínez nº 5;1;0;24;10;10;1;{'type': 'Point', 'coordinates': [-3.6954403, 40.4278682]};2020-12-13T12:55:03.723690
+10;Plaza de San Miguel;2;9;Plaza de San Miguel nº 9;1;0;24;15;9;0;{'type': 'Point', 'coordinates': [-3.7095084, 40.4156057]};2020-12-13T12:55:03.723690
+11;Marqués de la Ensenada;2;10;Calle Marqués de la Ensenada nº 16;1;0;24;10;13;0;{'type': 'Point', 'coordinates': [-3.69214, 40.42533]};2020-12-13T12:55:03.723690
+12;San Andrés;0;11;Calle San Andrés nº 18;1;0;24;5;18;0;{'type': 'Point', 'coordinates': [-3.7035918, 40.4269483]};2020-12-13T12:55:03.723690
+13;San Hermenegildo;0;12;Calle San Bernardo nº 85;1;0;24;6;18;0;{'type': 'Point', 'coordinates': [-3.7061931, 40.4284246]};2020-12-13T12:55:03.723690
+14;Conde Duque;0;13;Calle Conde Duque nº 22;1;0;24;4;20;0;{'type': 'Point', 'coordinates': [-3.7104417, 40.4273264]};2020-12-13T12:55:03.723690
+15;Ventura Rodríguez;1;14;Calle Ventura Rodríguez nº 2;1;0;24;17;6;0;{'type': 'Point', 'coordinates': [-3.713479, 40.4260957]};2020-12-13T12:55:03.723690
+16;San Vicente Ferrer;2;15;Calle San Vicente Ferrer nº 64;1;0;21;11;7;0;{'type': 'Point', 'coordinates': [-3.7074453, 40.4262383]};2020-12-13T12:55:03.723690
+17;San Bernardo;0;16;Calle San Bernardo nº 22;1;0;21;3;17;0;{'type': 'Point', 'coordinates': [-3.7075065, 40.4230721]};2020-12-13T12:55:03.723690
+18;Carlos Cambronero;2;17;Plaza de Carlos Cambronero nº 2;1;0;24;9;15;1;{'type': 'Point', 'coordinates': [-3.7038312, 40.4232649]};2020-12-13T12:55:03.723690
+19;Plaza de Pedro Zerolo;1;18;Plaza de Pedro Zerolo;1;0;24;15;5;0;{'type': 'Point', 'coordinates': [-3.6996502, 40.4207773]};2020-12-13T12:55:03.723690
+20;Prim;0;19;Calle Prim nº 2;1;0;24;2;18;0;{'type': 'Point', 'coordinates': [-3.6954983, 40.4218616]};2020-12-13T12:55:03.723690
+21;Banco de España A;2;20a;Calle Alcalá nº 49;1;0;30;18;9;2;{'type': 'Point', 'coordinates': [-3.6954615, 40.4192342]};2020-12-13T12:55:03.723690
+25;Jacometrezo;1;22;Calle Jacometrezo nº 3;1;0;24;17;2;0;{'type': 'Point', 'coordinates': [-3.7065376, 40.4200783]};2020-12-13T12:55:03.723690
+26;Santo Domingo;1;23;Plaza de Santo Domingo nº 1;1;0;24;17;4;0;{'type': 'Point', 'coordinates': [-3.7081246, 40.4202834]};2020-12-13T12:55:03.723690
+27;Palacio de Oriente;1;24;Calle Carlos III nº 1;1;0;24;17;5;0;{'type': 'Point', 'coordinates': [-3.710692, 40.417908]};2020-12-13T12:55:03.723690
+28;Plaza de Celenque A;0;25a;Plaza de Celenque nº 1;1;0;24;1;21;0;{'type': 'Point', 'coordinates': [-3.7057791, 40.4173703]};2020-12-13T12:55:03.723690
+29;Plaza de Celenque B;0;25b;Plaza de Celenque nº 1;1;0;24;2;20;0;{'type': 'Point', 'coordinates': [-3.7063837, 40.4172781]};2020-12-13T12:55:03.723690
+30;Plaza de las Salesas;0;26;Plaza de las Salesas 7;1;0;24;3;19;0;{'type': 'Point', 'coordinates': [-3.694475, 40.423855]};2020-12-13T12:55:03.723690
+31;Huertas;0;27;Calle Jesús nº 1;1;0;24;2;21;0;{'type': 'Point', 'coordinates': [-3.6956178, 40.4132798]};2020-12-13T12:55:03.723690
+32;Sevilla;0;28;Calle Alcalá nº 27;1;0;24;5;16;0;{'type': 'Point', 'coordinates': [-3.6984368, 40.4181518]};2020-12-13T12:55:03.723690
+33;Marqués de Cubas;2;29;Calle del Marqués de Cubas nº 25;1;0;24;15;7;0;{'type': 'Point', 'coordinates': [-3.6957355, 40.4162619]};2020-12-13T12:55:03.723690
+34;San Quintín;1;30;Calle Pavía nº 6;1;0;27;18;0;0;{'type': 'Point', 'coordinates': [-3.711504, 40.4192095]};2020-12-13T12:55:03.723690
+35;Calle Mayor;0;31;Calle Mayor nº 20;1;0;27;2;24;0;{'type': 'Point', 'coordinates': [-3.7068969, 40.4163638]};2020-12-13T12:55:03.723690
+36;Plaza de la Provincia;1;32;Plaza de la Provincia nº 1;1;0;18;12;5;1;{'type': 'Point', 'coordinates': [-3.7061032, 40.4150099]};2020-12-13T12:55:03.723690
+37;Carretas;2;33;Calle Carretas nº 8;1;0;21;8;11;1;{'type': 'Point', 'coordinates': [-3.7030833, 40.4165039]};2020-12-13T12:55:03.723690
+38;Jacinto Benavente;1;34;Plaza de Jacinto Benavente;1;0;24;19;0;0;{'type': 'Point', 'coordinates': [-3.7036825, 40.4146755]};2020-12-13T12:55:03.723690
+39;Plaza del Cordón;0;35;Plaza del Cordón nº 1;1;0;24;2;20;1;{'type': 'Point', 'coordinates': [-3.7103285, 40.4141931]};2020-12-13T12:55:03.723690
+40;Plaza de Ramales;2;36;Plaza de Ramales nº 1;1;0;24;10;11;1;{'type': 'Point', 'coordinates': [-3.71183, 40.4168]};2020-12-13T12:55:03.723690
+41;Plaza San Francisco;0;37;Plaza de San Francisco nº 5;1;0;24;5;16;0;{'type': 'Point', 'coordinates': [-3.7144964, 40.4108442]};2020-12-13T12:55:03.723690
+42;Plaza de los Carros;1;38;Carrera de San Francisco nº 1;1;0;24;16;6;1;{'type': 'Point', 'coordinates': [-3.7114762, 40.4114041]};2020-12-13T12:55:03.723690
+43;Plaza de la Cebada;1;39;Plaza de la Cebada nº 16 ;1;0;27;23;1;0;{'type': 'Point', 'coordinates': [-3.7088337, 40.4112744]};2020-12-13T12:55:03.723690
+44;Conde de Romanones;1;40;Plaza del Conde de Romanones nº 9;1;0;24;24;0;0;{'type': 'Point', 'coordinates': [-3.7049407, 40.4138846]};2020-12-13T12:55:03.723690
+45;Antón Martín;3;41;Calle Atocha nº 54;1;1;18;0;17;0;{'type': 'Point', 'coordinates': [-3.6991147, 40.4122047]};2020-12-13T12:55:03.723690
+46;Santa Isabel;0;42;Calle Santa Isabel nº 32;1;0;24;4;18;0;{'type': 'Point', 'coordinates': [-3.6982318, 40.4107085]};2020-12-13T12:55:03.723690
+47;Jesús y María;2;43;Calle Lavapiés nº 34-36;1;0;24;10;12;0;{'type': 'Point', 'coordinates': [-3.7025024, 40.4101564]};2020-12-13T12:55:03.723690
+48;Plaza de Nelson Mandela;2;44;Calle Mesón de Paredes nº 35;1;0;21;8;10;2;{'type': 'Point', 'coordinates': [-3.7040666, 40.4097617]};2020-12-13T12:55:03.723690
+49;Puerta de Toledo;2;45;Glorieta de la Puerta de Toledo nº 1;1;0;21;12;8;1;{'type': 'Point', 'coordinates': [-3.7110513, 40.4070358]};2020-12-13T12:55:03.723690
+50;Ribera de Curtidores;1;46;Calle Ribera de Curtidores nº 28;1;0;24;18;3;0;{'type': 'Point', 'coordinates': [-3.7071259, 40.4053153]};2020-12-13T12:55:03.723690
+51;Embajadores 1;2;47;Glorieta de Embajadores nº 6;1;0;24;8;15;0;{'type': 'Point', 'coordinates': [-3.7028265, 40.4047851]};2020-12-13T12:55:03.723690
+52;Embajadores 2;0;48;Glorieta de Embajadores nº 2;1;0;24;6;17;0;{'type': 'Point', 'coordinates': [-3.7022591, 40.4056107]};2020-12-13T12:55:03.723690
+53;Casa Encendida;0;49;Ronda de Atocha nº 34;1;0;24;7;15;1;{'type': 'Point', 'coordinates': [-3.6992759, 40.4060941]};2020-12-13T12:55:03.723690
+54;Museo Reina Sofía;2;50;Calle Santa Isabel nº 57;1;0;24;9;14;0;{'type': 'Point', 'coordinates': [-3.6933463, 40.4083684]};2020-12-13T12:55:03.723690
+55;Ronda de Atocha;2;51;Ronda de Atocha nº 2;1;0;27;17;10;0;{'type': 'Point', 'coordinates': [-3.6935205, 40.4075606]};2020-12-13T12:55:03.723690
+56;Plaza de Santa Ana;0;52;Plaza de Santa Ana nº 10;1;0;24;5;16;0;{'type': 'Point', 'coordinates': [-3.7007164, 40.4144226]};2020-12-13T12:55:03.723690
+57;Plaza de Lavapiés;2;53;Calle Valencia nº 1;1;0;24;8;14;1;{'type': 'Point', 'coordinates': [-3.7007111, 40.4083061]};2020-12-13T12:55:03.723690
+58;Barceló;0;54;Calle Barceló nº 7;1;0;21;5;13;0;{'type': 'Point', 'coordinates': [-3.700423, 40.4266828]};2020-12-13T12:55:03.723690
+59;Plaza de San Ildefonso;0;55;Plaza de San Ildefonso nº 3;1;0;24;4;17;1;{'type': 'Point', 'coordinates': [-3.7020842, 40.4239757]};2020-12-13T12:55:03.723690
+60;Plaza del Carmen ;0;56;Plaza del Carmen nº 1;1;0;24;5;18;0;{'type': 'Point', 'coordinates': [-3.7032414, 40.4184192]};2020-12-13T12:55:03.723690
+61;Santa Cruz del Marcenado;2;57;Calle Santa Cruz del Marcenado nº 24;1;0;24;12;12;0;{'type': 'Point', 'coordinates': [-3.7126299, 40.4295658]};2020-12-13T12:55:03.723690
+62;Augusto Figueroa;0;58;Calle Augusto Figueroa nº 33;1;0;24;1;21;2;{'type': 'Point', 'coordinates': [-3.697895, 40.4222862]};2020-12-13T12:55:03.723690
+63;Plaza de Juan Pujol;2;59;Calle Espíritu Santo nº 30;1;0;21;5;11;0;{'type': 'Point', 'coordinates': [-3.7043418, 40.4255495]};2020-12-13T12:55:03.723690
+64;Plaza de la Independencia;1;60;Plaza de la Independencia nº 6;1;0;24;21;2;0;{'type': 'Point', 'coordinates': [-3.688398, 40.419752]};2020-12-13T12:55:03.723690
+65;Narváez;2;61;Calle O'Donnell nº 28;1;0;24;13;11;0;{'type': 'Point', 'coordinates': [-3.6752045, 40.4213983]};2020-12-13T12:55:03.723690
+66;O'Donnell;2;62;Calle O'Donnell nº 50;1;0;24;9;13;0;{'type': 'Point', 'coordinates': [-3.6724968, 40.4213148]};2020-12-13T12:55:03.723690
+67;Ibiza;2;63;Calle Ibiza nº 62;1;0;24;15;9;0;{'type': 'Point', 'coordinates': [-3.6708959, 40.4179237]};2020-12-13T12:55:03.723690
+69;Antonio Maura;2;65;Calle Antonio Maura nº 15;1;0;24;15;8;0;{'type': 'Point', 'coordinates': [-3.6894193, 40.4166834]};2020-12-13T12:55:03.723690
+71;Almadén;1;67;Calle Almadén nº 28;1;0;24;21;1;0;{'type': 'Point', 'coordinates': [-3.693225, 40.4108472]};2020-12-13T12:55:03.723690
+72;Espalter;2;68;Calle Espalter nº 1;1;0;21;13;7;0;{'type': 'Point', 'coordinates': [-3.6912023, 40.4128372]};2020-12-13T12:55:03.723690
+73;Puerta del Ángel Caído;1;69;Avenida de Alfonso XII nº 54;1;0;27;23;2;0;{'type': 'Point', 'coordinates': [-3.688822, 40.409808]};2020-12-13T12:55:03.723690
+74;Puerta del Doce de Octubre;2;70;Avenida de Menéndez Pelayo nº 63;1;0;24;16;8;0;{'type': 'Point', 'coordinates': [-3.6779232, 40.4153053]};2020-12-13T12:55:03.723690
+75;Doce de Octubre;0;71;Calle Doce de Octubre nº 28;1;0;24;4;16;1;{'type': 'Point', 'coordinates': [-3.6738865, 40.4159569]};2020-12-13T12:55:03.723690
+76;Sainz de Baranda;1;72;Calle Doctor Esquerdo nº 99;1;0;24;21;3;0;{'type': 'Point', 'coordinates': [-3.6691838, 40.4157413]};2020-12-13T12:55:03.723690
+77;Plaza de los Astros;0;73;Avenida de Nazaret nº 7;1;0;24;6;17;0;{'type': 'Point', 'coordinates': [-3.6689089, 40.4114475]};2020-12-13T12:55:03.723690
+78;Puerta del Pacífico ;1;74;Avenida de Menéndez Pelayo nº 73;1;0;24;22;2;0;{'type': 'Point', 'coordinates': [-3.6766813, 40.4117627]};2020-12-13T12:55:03.723690
+79;Menéndez Pelayo;2;75;Avenida de Menéndez Pelayo nº 90;1;0;24;14;10;0;{'type': 'Point', 'coordinates': [-3.6784838, 40.4082805]};2020-12-13T12:55:03.723690
+80;Puerta de Mariano de Cavia;2;76;Avenida del Mediterráneo nº 19;1;0;24;11;12;0;{'type': 'Point', 'coordinates': [-3.6751352, 40.4071304]};2020-12-13T12:55:03.723690
+81;Conde de Casal;1;77;Plaza del Conde de Casal nº 8;1;0;22;14;5;0;{'type': 'Point', 'coordinates': [-3.670422, 40.40635]};2020-12-13T12:55:03.723690
+82;Pedro Bosch;2;78;Calle Cerro de la Plata nº 2;1;0;24;13;11;0;{'type': 'Point', 'coordinates': [-3.6744, 40.400789]};2020-12-13T12:55:03.723690
+83;Puerta de Granada;0;79;Avenida de Menéndez Pelayo nº 38;1;0;24;5;16;1;{'type': 'Point', 'coordinates': [-3.6803874, 40.4051451]};2020-12-13T12:55:03.723690
+84;Atocha A;2;80a;Paseo de la Infanta Isabel nº 3;1;0;24;13;9;0;{'type': 'Point', 'coordinates': [-3.6902255, 40.4075685]};2020-12-13T12:55:03.723690
+85;Atocha B;2;80b;Paseo de la Infanta Isabel nº 3;1;0;27;14;13;0;{'type': 'Point', 'coordinates': [-3.6901234, 40.4074902]};2020-12-13T12:55:03.723690
+86;Cuesta de Moyano;1;81;Plaza del Emperador Carlos V nº 11;1;0;24;17;5;1;{'type': 'Point', 'coordinates': [-3.691987, 40.409297]};2020-12-13T12:55:03.723690
+87;Niño Jesús;2;82;Calle Doctor Esquerdo nº 161;1;0;24;12;11;0;{'type': 'Point', 'coordinates': [-3.6697526, 40.4084556]};2020-12-13T12:55:03.723690
+88;Pío Baroja;2;83;Calle Pío Baroja nº 10;1;0;24;12;10;0;{'type': 'Point', 'coordinates': [-3.6745323, 40.4132995]};2020-12-13T12:55:03.723690
+89;Valderribas;2;84;Calle Doctor Esquerdo nº 191;1;0;24;11;11;0;{'type': 'Point', 'coordinates': [-3.6726019, 40.4032501]};2020-12-13T12:55:03.723690
+90;Puerta de Madrid;1;85;Avenida de Menéndez Pelayo nº 11;1;0;27;20;6;0;{'type': 'Point', 'coordinates': [-3.680008, 40.421501]};2020-12-13T12:55:03.723690
+91;Cibeles;1;86;Paseo del Prado nº 1;1;0;21;19;1;0;{'type': 'Point', 'coordinates': [-3.6933498, 40.4186516]};2020-12-13T12:55:03.723690
+92;Ayala;0;87;Calle Ayala nº 44;1;0;24;5;18;0;{'type': 'Point', 'coordinates': [-3.6832566, 40.427736]};2020-12-13T12:55:03.723690
+93;Embajada de Italia;2;88;Calle Velázquez nº 75;1;0;24;8;16;0;{'type': 'Point', 'coordinates': [-3.6838303, 40.4313576]};2020-12-13T12:55:03.723690
+94;Conde Peñalver;0;89;Calle Ayala nº 102;1;0;24;4;20;0;{'type': 'Point', 'coordinates': [-3.6752024, 40.4272582]};2020-12-13T12:55:03.723690
+95;General Pardiñas;2;90;Calle Goya nº 18;1;0;30;18;10;0;{'type': 'Point', 'coordinates': [-3.6837876, 40.4250361]};2020-12-13T12:55:03.723690
+96;Príncipe de Vergara;0;91;Calle Hermosilla nº 70;1;0;24;1;18;1;{'type': 'Point', 'coordinates': [-3.6787441, 40.426134]};2020-12-13T12:55:03.723690
+97;Claudio Coello;0;92;Calle Claudio Coello nº 45;1;0;24;1;22;0;{'type': 'Point', 'coordinates': [-3.6865463, 40.4262945]};2020-12-13T12:55:03.723690
+98;Plaza de Colón;0;93;Calle Goya nº 1;1;0;24;1;22;0;{'type': 'Point', 'coordinates': [-3.6893698, 40.4257046]};2020-12-13T12:55:03.723690
+99;Biblioteca Nacional;1;94;Paseo de Recoletos nº 32-34;1;0;21;19;1;0;{'type': 'Point', 'coordinates': [-3.690756, 40.4232153]};2020-12-13T12:55:03.723690
+100;Villanueva;0;95;Calle Claudio Coello nº 19;1;0;24;5;17;0;{'type': 'Point', 'coordinates': [-3.6870548, 40.4226584]};2020-12-13T12:55:03.723690
+101;Castelló;0;96;Calle Alcalá nº 111;1;0;27;4;19;0;{'type': 'Point', 'coordinates': [-3.6821793, 40.422064]};2020-12-13T12:55:03.723690
+102;Alcalá;2;97;Avenida de Menéndez Pelayo nº 3;1;0;27;8;17;0;{'type': 'Point', 'coordinates': [-3.6805189, 40.4222969]};2020-12-13T12:55:03.723690
+103;Plaza de Felipe II;0;98;Plaza de Felipe II;1;0;24;7;17;0;{'type': 'Point', 'coordinates': [-3.6758383, 40.4239447]};2020-12-13T12:55:03.723690
+104;Alcántara;2;99;Calle Alcántara nº 2;1;0;24;7;15;0;{'type': 'Point', 'coordinates': [-3.6738714, 40.4261851]};2020-12-13T12:55:03.723690
+105;Palacio de Deportes;0;100;Calle Goya nº 99;1;0;24;6;16;1;{'type': 'Point', 'coordinates': [-3.67384, 40.42478]};2020-12-13T12:55:03.723690
+106;Jorge Juan;3;101;Calle Jorge Juan nº 131;1;1;24;0;0;0;{'type': 'Point', 'coordinates': [-3.6691524, 40.4231526]};2020-12-13T12:55:03.723690
+107;Velázquez;1;102;Calle Alcalá nº 95;1;0;24;20;3;0;{'type': 'Point', 'coordinates': [-3.6840229, 40.4211802]};2020-12-13T12:55:03.723690
+108;Ortega y Gasset;2;103;Calle Ortega y Gasset nº 6;1;0;24;13;9;1;{'type': 'Point', 'coordinates': [-3.68653, 40.43037]};2020-12-13T12:55:03.723690
+109;Castellana;2;104;Paseo de la Castellana nº 4;1;0;21;11;9;0;{'type': 'Point', 'coordinates': [-3.68958, 40.42677]};2020-12-13T12:55:03.723690
+110;Serrano;2;105;Calle Serrano nº 54;1;0;24;8;16;0;{'type': 'Point', 'coordinates': [-3.68745, 40.42699]};2020-12-13T12:55:03.723690
+111;Colón A;2;106a;Calle Serrano nº 34;1;0;18;8;9;0;{'type': 'Point', 'coordinates': [-3.6877227, 40.4251002]};2020-12-13T12:55:03.723690
+112;Colón B;2;106b;Calle Serrano nº 34;1;0;18;6;10;0;{'type': 'Point', 'coordinates': [-3.687745, 40.424963]};2020-12-13T12:55:03.723690
+113;Columela;0;107;Calle Serrano nº 6;1;0;24;4;20;0;{'type': 'Point', 'coordinates': [-3.6884369, 40.4215246]};2020-12-13T12:55:03.723690
+114;Mártires Concepcionistas;0;108;Calle Mártires Concepcionistas nº 2;1;0;27;6;20;0;{'type': 'Point', 'coordinates': [-3.6706024, 40.4273005]};2020-12-13T12:55:03.723690
+115;Marqués de Salamanca;0;109;Calle José Ortega y Gasset nº 30;1;0;24;7;16;0;{'type': 'Point', 'coordinates': [-3.6816402, 40.4300481]};2020-12-13T12:55:03.723690
+116;Moncloa;2;110;Paseo de Moret nº 2;1;0;24;12;10;0;{'type': 'Point', 'coordinates': [-3.7200845, 40.4347895]};2020-12-13T12:55:03.723690
+117;Arcipreste de Hita A;2;111a;Calle Arcipreste de Hita nº 12;1;0;24;13;10;0;{'type': 'Point', 'coordinates': [-3.7175435, 40.4337322]};2020-12-13T12:55:03.723690
+118;Arcipreste de Hita B;2;111b;Calle Arcipreste de Hita nº 12;1;0;24;12;11;0;{'type': 'Point', 'coordinates': [-3.7179687, 40.4341006]};2020-12-13T12:55:03.723690
+119;Paseo de Moret;2;112;Paseo de Moret nº 11;1;0;24;12;12;0;{'type': 'Point', 'coordinates': [-3.7246532, 40.4325991]};2020-12-13T12:55:03.723690
+120;Pintor Rosales;0;113;Paseo del Pintor Rosales nº 38;1;0;24;7;17;0;{'type': 'Point', 'coordinates': [-3.7205129, 40.427657]};2020-12-13T12:55:03.723690
+121;Quintana;0;114;Calle Quintana nº 11-13;1;0;24;5;19;0;{'type': 'Point', 'coordinates': [-3.7174158, 40.4277456]};2020-12-13T12:55:03.723690
+122;Ferraz;2;115;Calle Evaristo San Miguel nº 2;1;0;24;11;12;0;{'type': 'Point', 'coordinates': [-3.7170448, 40.4253944]};2020-12-13T12:55:03.723690
+123;Plaza de España A;2;116a;Plaza de España;1;0;24;14;10;0;{'type': 'Point', 'coordinates': [-3.711603, 40.42402]};2020-12-13T12:55:03.723690
+124;Plaza de España B;2;116b;Plaza de España;1;0;24;12;12;0;{'type': 'Point', 'coordinates': [-3.711703, 40.42412]};2020-12-13T12:55:03.723690
+125;Altamirano;2;117;Calle Altamirano nº 24;1;0;24;12;12;0;{'type': 'Point', 'coordinates': [-3.7188898, 40.4309797]};2020-12-13T12:55:03.723690
+126;Juan Martín;2;118;Calle Juan Martín el Empecinado nº 14;1;0;24;16;7;0;{'type': 'Point', 'coordinates': [-3.6882407, 40.400781]};2020-12-13T12:55:03.723690
+127;Méndez Álvaro;2;119;Calle Méndez Álvaro nº 11;1;0;24;15;7;0;{'type': 'Point', 'coordinates': [-3.6863218, 40.4013216]};2020-12-13T12:55:03.723690
+128;Palos de la Frontera;2;120;Calle Palos de la Frontera nº 40;1;0;24;16;7;0;{'type': 'Point', 'coordinates': [-3.6944768, 40.4032208]};2020-12-13T12:55:03.723690
+129;Santa María de la Cabeza;2;121;Paseo de Santa María de la Cabeza nº 58;1;0;24;8;15;0;{'type': 'Point', 'coordinates': [-3.6987665, 40.4017926]};2020-12-13T12:55:03.723690
+130;Santa Engracia 14;2;122;Calle Santa Engracia nº 14;1;0;24;7;15;0;{'type': 'Point', 'coordinates': [-3.6967169, 40.4291992]};2020-12-13T12:55:03.723690
+131;Guzmán el Bueno;0;123;Calle Guzmán el Bueno nº 2;1;0;24;5;17;0;{'type': 'Point', 'coordinates': [-3.7133412, 40.4306458]};2020-12-13T12:55:03.723690
+169;Manuel Silvela;2;124;Calle Manuel Silvela nº 20;1;0;24;12;9;0;{'type': 'Point', 'coordinates': [-3.6993465, 40.4309524]};2020-12-13T12:55:03.723690
+164;General Martínez Campos ;2;125;Calle Fernández de la Hoz nº 29;1;0;24;11;11;0;{'type': 'Point', 'coordinates': [-3.6948626, 40.435285]};2020-12-13T12:55:03.723690
+163;General Álvarez de Castro;2;126;Calle del General Álvarez de Castro nº 2;1;0;24;8;13;0;{'type': 'Point', 'coordinates': [-3.7015686, 40.4344731]};2020-12-13T12:55:03.723690
+168;Fernando el Católico;2;127;Calle Fernando el Católico nº 19;1;0;24;13;11;0;{'type': 'Point', 'coordinates': [-3.708439, 40.4338516]};2020-12-13T12:55:03.723690
+160;Cea Bermúdez;2;128;Calle Cea Bermúdez nº 59;1;0;27;12;9;0;{'type': 'Point', 'coordinates': [-3.7154329, 40.438994]};2020-12-13T12:55:03.723690
+161;José Abascal;0;129;Calle José Abascal nº 33;1;0;24;0;22;0;{'type': 'Point', 'coordinates': [-3.6982353, 40.4383865]};2020-12-13T12:55:03.723690
+157;Santa Engracia 127;2;130;Calle Santa Engracia nº 127;1;0;20;6;11;0;{'type': 'Point', 'coordinates': [-3.70164, 40.44156]};2020-12-13T12:55:03.723690
+156;Bravo Murillo 44;0;131;Calle Bravo Murillo nº 44;1;0;24;4;20;0;{'type': 'Point', 'coordinates': [-3.7040344, 40.4418402]};2020-12-13T12:55:03.723690
+149;Glorieta de los Cuatro Caminos;0;132;Calle Santa Engracia nº 168;1;0;24;2;14;1;{'type': 'Point', 'coordinates': [-3.7036675, 40.4463667]};2020-12-13T12:55:03.723690
+150;Raimundo Fernández;0;133;Calle Raimundo Fernández Villaverde nº 33-35;1;0;24;1;23;0;{'type': 'Point', 'coordinates': [-3.7001669, 40.447125]};2020-12-13T12:55:03.723690
+153;Agustín de Betancourt;0;134;Calle María de Guzmán nº 58;1;0;24;3;19;0;{'type': 'Point', 'coordinates': [-3.6956047, 40.4440297]};2020-12-13T12:55:03.723690
+158;Plaza de San Juan de la Cruz;0;135;Plaza de San Juan de la Cruz nº 11;1;0;24;3;21;0;{'type': 'Point', 'coordinates': [-3.6927821, 40.4415974]};2020-12-13T12:55:03.723690
+151;Castellana 106;2;136;Paseo de la Castellana nº 106;1;0;24;14;9;1;{'type': 'Point', 'coordinates': [-3.690861, 40.4453307]};2020-12-13T12:55:03.723690
+152;Plaza de la República Argentina;2;137;Plaza de la República Argentina nº 6-7;1;0;24;10;14;0;{'type': 'Point', 'coordinates': [-3.6853312, 40.445411]};2020-12-13T12:55:03.723690
+154;Paseo de la Castellana con Raimundo Fernández;2;138;Paseo de la Castellana nº 67;1;0;24;13;8;0;{'type': 'Point', 'coordinates': [-3.6917932, 40.4457414]};2020-12-13T12:55:03.723690
+159;José Gutiérrez Abascal ;0;139;Calle José Gutiérrez Abascal nº 2;1;0;24;6;16;0;{'type': 'Point', 'coordinates': [-3.6907784, 40.4396792]};2020-12-13T12:55:03.723690
+162;Velázquez 130;0;140;Calle Velázquez nº 130;1;0;27;7;18;0;{'type': 'Point', 'coordinates': [-3.6831578, 40.4385127]};2020-12-13T12:55:03.723690
+165;Pº Castellana - Glorieta de Emilio Castelar;0;141;Paseo de la Castellana nº 43;1;0;12;2;9;0;{'type': 'Point', 'coordinates': [-3.6892368, 40.4355143]};2020-12-13T12:55:03.723690
+167;Castellana 42;2;142;Paseo de la Castellana nº 42;1;0;24;11;11;0;{'type': 'Point', 'coordinates': [-3.6879154, 40.4334087]};2020-12-13T12:55:03.723690
+166;Diego de León 52;0;143;Calle Diego de León nº 52;1;0;24;6;16;1;{'type': 'Point', 'coordinates': [-3.678492, 40.4345973]};2020-12-13T12:55:03.723690
+170;Juan Bravo 50;0;144;Calle Juan Bravo nº 50;1;0;24;0;22;1;{'type': 'Point', 'coordinates': [-3.6758555, 40.4323655]};2020-12-13T12:55:03.723690
+171;Ortega y Gasset 87;0;145;Calle Ortega y Gasset nº 87;1;0;24;5;19;0;{'type': 'Point', 'coordinates': [-3.6712823, 40.429887]};2020-12-13T12:55:03.723690
+155;María Francisca 1;1;146;Calle María Francisca nº 1;1;0;18;12;3;0;{'type': 'Point', 'coordinates': [-3.6787169, 40.4442258]};2020-12-13T12:55:03.723690
+148;Doctor Arce 45;2;147;Avenida del Doctor Arce nº 45;1;0;24;10;13;0;{'type': 'Point', 'coordinates': [-3.6797296, 40.4483269]};2020-12-13T12:55:03.723690
+144;Serrano 210;2;148;Calle Serrano nº 210;1;0;24;7;15;0;{'type': 'Point', 'coordinates': [-3.6817962, 40.4510188]};2020-12-13T12:55:03.723690
+146;Paseo de la Habana 42;1;149;Paseo de la Habana nº 42;1;0;24;17;6;0;{'type': 'Point', 'coordinates': [-3.6881689, 40.4498613]};2020-12-13T12:55:03.723690
+147;Castellana frente a Hermanos Pinzón;0;150;Paseo de la Castellana nº 124;1;0;24;7;16;0;{'type': 'Point', 'coordinates': [-3.6905604, 40.4488924]};2020-12-13T12:55:03.723690
+145;Orense 12;0;151;Calle Orense nº 12;1;0;24;3;19;0;{'type': 'Point', 'coordinates': [-3.6952943, 40.4489101]};2020-12-13T12:55:03.723690
+142;General Perón 1;2;152;Avenida del General Perón nº 1-4;1;0;24;9;13;0;{'type': 'Point', 'coordinates': [-3.6990077, 40.4527164]};2020-12-13T12:55:03.723690
+143;General Perón con Poeta Joan Maragall;2;153;Avenida del General Perón nº 36;1;0;24;8;15;0;{'type': 'Point', 'coordinates': [-3.693085, 40.4522454]};2020-12-13T12:55:03.723690
+141;Orense 36;0;154;Calle Orense nº 36;1;0;24;4;18;0;{'type': 'Point', 'coordinates': [-3.6946218, 40.4548456]};2020-12-13T12:55:03.723690
+139;San Germán;0;155;Calle del General Yagüe nº 57;1;0;24;1;17;1;{'type': 'Point', 'coordinates': [-3.7009675, 40.4572824]};2020-12-13T12:55:03.723690
+140;Sor Ángela de la Cruz;0;156;Calle Sor Ángela de la Cruz nº 2;1;0;24;6;17;0;{'type': 'Point', 'coordinates': [-3.691533, 40.4592351]};2020-12-13T12:55:03.723690
+137;Castellana 164;1;157;Paseo de la Castellana nº 164;1;0;24;22;1;0;{'type': 'Point', 'coordinates': [-3.6894151, 40.4591366]};2020-12-13T12:55:03.723690
+138;Alberto Alcocer;0;158;Avenida de Alberto Alcocer nº 22;1;0;24;3;19;0;{'type': 'Point', 'coordinates': [-3.684715, 40.4585318]};2020-12-13T12:55:03.723690
+173;Paseo de la Habana 63;1;159;Paseo de la Habana nº 63;1;0;24;20;3;0;{'type': 'Point', 'coordinates': [-3.6835926, 40.4543852]};2020-12-13T12:55:03.723690
+172;Colombia;2;160;Calle Colombia nº 7;1;0;24;14;8;1;{'type': 'Point', 'coordinates': [-3.6763439, 40.4572466]};2020-12-13T12:55:03.723690
+132;Paseo de la Florida;2;161;Paseo de la Florida nº 8;1;0;27;16;8;1;{'type': 'Point', 'coordinates': [-3.7224983, 40.4219665]};2020-12-13T12:55:03.723690
+133;Metro Pirámides;1;162;Paseo de los Olmos nº 28;1;0;24;18;4;0;{'type': 'Point', 'coordinates': [-3.7108108, 40.4034076]};2020-12-13T12:55:03.723690
+134;Paseo de la Esperanza;0;163;Paseo de la Esperanza nº 2;1;0;21;5;14;0;{'type': 'Point', 'coordinates': [-3.7064516, 40.4035988]};2020-12-13T12:55:03.723690
+136;Paseo de las Delicias;0;164;Paseo de las Delicias nº 92-94;1;0;24;6;16;1;{'type': 'Point', 'coordinates': [-3.6945025, 40.3972616]};2020-12-13T12:55:03.723690
+135;Entrada Matadero;0;165;Paseo de la Chopera nº 14;1;0;27;5;21;0;{'type': 'Point', 'coordinates': [-3.6975708, 40.3928821]};2020-12-13T12:55:03.723690
+174;Segovia 26;0;166;Calle Segovia, 26;1;0;24;5;19;0;{'type': 'Point', 'coordinates': [-3.7135833, 40.4138333]};2020-12-13T12:55:03.723690
+175;Segovia 45;0;167;Calle Segovia, 45;1;0;24;5;17;0;{'type': 'Point', 'coordinates': [-3.717487, 40.413736]};2020-12-13T12:55:03.723690
+176;Batalla del Salado;1;168;Pº Sta. Mª Cabeza, 29-31;1;0;24;18;5;0;{'type': 'Point', 'coordinates': [-3.6959166, 40.4044722]};2020-12-13T12:55:03.723690
+177;Pirámides;2;169;Toledo, 181;1;0;24;8;15;0;{'type': 'Point', 'coordinates': [-3.7138055, 40.4016111]};2020-12-13T12:55:03.723690
+178;Paseo de la Esperanza;2;170;Pº Esperanza, 21;1;0;24;13;9;0;{'type': 'Point', 'coordinates': [-3.7043611, 40.401]};2020-12-13T12:55:03.723690
+179;Embajadores-Cáceres;2;171;Embajadores, 101;1;0;24;16;8;0;{'type': 'Point', 'coordinates': [-3.6983888, 40.39975]};2020-12-13T12:55:03.723690
+180;Delicias;1;172;Bustamante, 1;1;0;24;19;3;0;{'type': 'Point', 'coordinates': [-3.6935833, 40.4008888]};2020-12-13T12:55:03.723690
+181;Puente Praga;0;173;Pº Esperanza, 59;1;0;24;3;20;0;{'type': 'Point', 'coordinates': [-3.7023918, 40.3981798]};2020-12-13T12:55:03.723690
+182;Madrid Río-Yeserías;2;174;Pº Yeserías 45;1;0;27;15;12;0;{'type': 'Point', 'coordinates': [-3.7065277, 40.3974444]};2020-12-13T12:55:03.723690
+183;Jaime el Conquistador;0;175;Jaime I el Conquistador, 30;1;0;21;5;16;0;{'type': 'Point', 'coordinates': [-3.6983055, 40.3962222]};2020-12-13T12:55:03.723690
+184;Beata;0;176;Alicante, 3;1;0;24;2;20;1;{'type': 'Point', 'coordinates': [-3.6937222, 40.39425]};2020-12-13T12:55:03.723690
+185;Legazpi;0;177;Bolivar, 3;1;0;24;6;17;0;{'type': 'Point', 'coordinates': [-3.6941944, 40.3914722]};2020-12-13T12:55:03.723690
+186;Junta Municipal Retiro;2;178;León Gil de Palacios, 5;1;0;24;13;11;0;{'type': 'Point', 'coordinates': [-3.6788343, 40.4029202]};2020-12-13T12:55:03.723690
+187;Puente de Vallecas;0;179;Avda. Albufera 6 con Antonia Calas ;1;0;24;1;22;0;{'type': 'Point', 'coordinates': [-3.66925, 40.3979722]};2020-12-13T12:55:03.723690
+188;Méndez Álvaro;2;180;Retama, 5;1;0;24;11;12;0;{'type': 'Point', 'coordinates': [-3.6758888, 40.3941388]};2020-12-13T12:55:03.723690
+189;Retiro-Ibiza;0;181;Ibiza, 18;1;0;27;7;18;0;{'type': 'Point', 'coordinates': [-3.6766111, 40.41825]};2020-12-13T12:55:03.723690
+190;Parque Roma;2;182;Sainz de Baranda, frente al nº 107;1;0;24;7;12;0;{'type': 'Point', 'coordinates': [-3.6657777, 40.4186666]};2020-12-13T12:55:03.723690
+191;Doctor Esquerdo-Hermosilla;0;183;Hermosilla, 135;1;0;24;2;22;0;{'type': 'Point', 'coordinates': [-3.669339, 40.425635]};2020-12-13T12:55:03.723690
+192;Marqués de Zafra;0;184;Pº Marqués de Zafra, 24;1;0;24;4;18;0;{'type': 'Point', 'coordinates': [-3.6653055, 40.426]};2020-12-13T12:55:03.723690
+193;Quinta Fuente del Berro;0;185;Sancho Dávila esq. Pº Marqués de Zafra;1;0;24;4;17;0;{'type': 'Point', 'coordinates': [-3.6615277, 40.4250833]};2020-12-13T12:55:03.723690
+194;General Pardiñas;0;186;General Pardiñas, 56;1;0;24;0;21;0;{'type': 'Point', 'coordinates': [-3.6782777, 40.4290555]};2020-12-13T12:55:03.723690
+195;Alcalá-Ventas;0;187;Alejandro González, 1;1;0;24;1;21;0;{'type': 'Point', 'coordinates': [-3.6638888, 40.4301666]};2020-12-13T12:55:03.723690
+196;Puente de Ventas;2;188;Avda. Daroca, 2;1;0;27;15;11;0;{'type': 'Point', 'coordinates': [-3.6590555, 40.4311944]};2020-12-13T12:55:03.723690
+197;Avenida Donostiarra;2;189;Virgen de la Alegria 18;1;0;24;14;7;0;{'type': 'Point', 'coordinates': [-3.6554918, 40.4351256]};2020-12-13T12:55:03.723690
+198;Velázquez-Diego de León;2;190;Velázquez, 91;1;0;24;13;10;0;{'type': 'Point', 'coordinates': [-3.6835833, 40.4343333]};2020-12-13T12:55:03.723690
+199;Diego de león;0;191;Alonso Heredia, 1;1;0;18;4;13;0;{'type': 'Point', 'coordinates': [-3.674, 40.4346388]};2020-12-13T12:55:03.723690
+200;Avenida de los Toreros;0;192;Avda. Toreros,3;1;0;27;5;21;0;{'type': 'Point', 'coordinates': [-3.6714166, 40.4318611]};2020-12-13T12:55:03.723690
+201;Ventas;0;193;Avda. Toreros, 49;1;0;27;5;18;0;{'type': 'Point', 'coordinates': [-3.6655555, 40.4324722]};2020-12-13T12:55:03.723690
+202;Avenida de América 2;0;194;Francisco Silvela 86;1;0;24;3;18;0;{'type': 'Point', 'coordinates': [-3.6772222, 40.43725]};2020-12-13T12:55:03.723690
+203;Avenida de América 1;0;195;Padre Indalecio Hernandez, 1;1;0;24;1;20;0;{'type': 'Point', 'coordinates': [-3.6754444, 40.4392222]};2020-12-13T12:55:03.723690
+204;Prosperidad;0;196;Suero de Quiñones, 2;1;0;24;4;20;0;{'type': 'Point', 'coordinates': [-3.6751388, 40.4441388]};2020-12-13T12:55:03.723690
+205;Parque Berlín;2;197;Avenida Concha Espina, 34 ;1;0;24;10;13;0;{'type': 'Point', 'coordinates': [-3.6780555, 40.4515833]};2020-12-13T12:55:03.723690
+206;Rubén Darío;0;198;Gta. Rubén Darío 2;1;0;24;4;18;0;{'type': 'Point', 'coordinates': [-3.6915555, 40.4331111]};2020-12-13T12:55:03.723690
+207;Fernando el Católico;0;199;Fernando el Católico, 61;1;0;27;5;21;0;{'type': 'Point', 'coordinates': [-3.7149166, 40.4343611]};2020-12-13T12:55:03.723690
+208;Quevedo;0;200;Gta. Quevedo, 5;1;0;24;4;17;0;{'type': 'Point', 'coordinates': [-3.7046666, 40.4336944]};2020-12-13T12:55:03.723690
+209;Canal;0;201;José Abascal, frene al nº 2;1;0;24;5;19;0;{'type': 'Point', 'coordinates': [-3.7038333, 40.4386944]};2020-12-13T12:55:03.723690
+210;Parque Santander;2;202;Calle Santander esq. Avda. Filipinas;1;0;24;16;7;0;{'type': 'Point', 'coordinates': [-3.7080833, 40.4411388]};2020-12-13T12:55:03.723690
+211;San Francisco de Sales;1;203;General Ampudia, 2;1;0;24;21;3;0;{'type': 'Point', 'coordinates': [-3.7144722, 40.44175]};2020-12-13T12:55:03.723690
+212;Cuatro Caminos 2;0;204;Doctor Santero 1;1;0;24;0;22;0;{'type': 'Point', 'coordinates': [-3.7041666, 40.4476666]};2020-12-13T12:55:03.723690
+213;Estrecho;0;205;Navarra, 1;1;0;24;0;20;0;{'type': 'Point', 'coordinates': [-3.7032777, 40.4535]};2020-12-13T12:55:03.723690
+214;Metro Tetuán;2;206;Marqués de Viana, 3;1;0;24;11;11;0;{'type': 'Point', 'coordinates': [-3.6989925, 40.4607502]};2020-12-13T12:55:03.723690
+215;Remonta;2;207;Azucenas, 1;1;0;18;6;9;0;{'type': 'Point', 'coordinates': [-3.6973333, 40.4630277]};2020-12-13T12:55:03.723690
+216;Plaza de Castilla;2;208;Paseo Castellana, 216;1;0;24;8;12;0;{'type': 'Point', 'coordinates': [-3.6886388, 40.4663611]};2020-12-13T12:55:03.723690
+217;Plaza de Castilla 2;2;209;Paseo Castellana (Fundación Canal);1;0;24;13;7;0;{'type': 'Point', 'coordinates': [-3.6887722, 40.4656779]};2020-12-13T12:55:03.723690
+218;Tres Cruces;1;210;Tres Cruces 7;1;0;27;21;6;0;{'type': 'Point', 'coordinates': [-3.7026735, 40.419674]};2020-12-13T12:55:03.723690
+219;Desengaño;1;211;Desengaño 1;1;0;24;18;5;0;{'type': 'Point', 'coordinates': [-3.70239, 40.42059]};2020-12-13T12:55:03.723690
+220;Marqués de Vadillo;2;212;Marqués de Vadillo, 9;1;0;24;13;10;0;{'type': 'Point', 'coordinates': [-3.716591, 40.398247]};2020-12-13T12:55:03.723690
+221;Glorieta de Cádiz;0;213;Antonio López, 129;1;0;24;4;18;0;{'type': 'Point', 'coordinates': [-3.70017, 40.38895]};2020-12-13T12:55:03.723690
+222;Condesa de Venadito;2;214;Condesa de Venadito, 2 / Calle Albacete;1;0;24;11;9;0;{'type': 'Point', 'coordinates': [-3.65741, 40.44315]};2020-12-13T12:55:03.723690
+223;Gutierre de Cetina;1;215;Gutierre de Cetina, 77;1;0;24;15;6;0;{'type': 'Point', 'coordinates': [-3.640994, 40.429706]};2020-12-13T12:55:03.723690
+224;Puerta del Ángel;2;216;Plaza Puerta del Ángel, 4;1;0;24;15;8;0;{'type': 'Point', 'coordinates': [-3.728318, 40.413764]};2020-12-13T12:55:03.723690
+225;Pedro Rico;2;217;Pedro Rico, 4;1;0;24;11;11;0;{'type': 'Point', 'coordinates': [-3.688463, 40.481086]};2020-12-13T12:55:03.723690
+226;Camino Vinateros;1;218;Camino Vinateros, 28;1;0;24;17;5;0;{'type': 'Point', 'coordinates': [-3.65779, 40.41053]};2020-12-13T12:55:03.723690
+227;Marroquina;2;219;Camino Vinateros, 108;1;0;24;8;13;0;{'type': 'Point', 'coordinates': [-3.646697, 40.408264]};2020-12-13T12:55:03.723690
+228;Plaza del Encuentro;2;220;Calle Arroyo de las Pilillas, 6;1;0;24;8;16;0;{'type': 'Point', 'coordinates': [-3.65122, 40.40617]};2020-12-13T12:55:03.723690
+229;Pavones;0;221;Hacienda de Pavones, 342;1;0;24;3;19;0;{'type': 'Point', 'coordinates': [-3.634587, 40.400368]};2020-12-13T12:55:03.723690
+230;Antonio López;0;222;Eugenio Caxes, frente al 12;1;0;24;7;17;0;{'type': 'Point', 'coordinates': [-3.7026789, 40.3917871]};2020-12-13T12:55:03.723690
+231;Ermita Santo;2;223;Paseo de la Ermita del Santo, 48;1;0;24;11;11;0;{'type': 'Point', 'coordinates': [-3.7244893989507686, 40.406837862773465]};2020-12-13T12:55:03.723690
+232;Caramuel;0;224;Caramuel, 51;1;0;27;2;18;0;{'type': 'Point', 'coordinates': [-3.728533714316331, 40.40913630273305]};2020-12-13T12:55:03.723690

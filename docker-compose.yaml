@@ -164,6 +164,12 @@ services:
       context: ./airflow
       dockerfile: Dockerfile
     entrypoint: /bin/bash
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:postgres@postgres:5432/airflow_db
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     command:
       - -c
       - airflow db init &&
@@ -176,6 +182,7 @@ services:
     volumes:
       - ./airflow/data:/opt/airflow/data
       - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/airflow.cfg:/opt/airflow/airflow.cfg
 
   jupyter:
     platform: linux/amd64
@@ -192,23 +199,24 @@ services:
       - ./jupyter/notebooks:/home/jovyan/notebooks
       - ./jupyter/data:/home/jovyan/data
 
-  postgres-hive:
+  postgres:
     image: postgres:16
     restart: unless-stopped
     container_name: postgres
     environment:
-      POSTGRES_DB: 'metastore_db'
-      POSTGRES_USER: 'hive'
-      POSTGRES_PASSWORD: 'password'
+      POSTGRES_DB: 'postgres'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
     ports:
       - '5432:5432'
     volumes:
-      - ./hive/data:/var/lib/postgresql/data
+      - ./postgres/data:/var/lib/postgresql/data
+      - ./postgres/init-db:/docker-entrypoint-initdb.d
 
   metastore:
     image: apache/hive:4.0.0
     depends_on:
-      - postgres-hive
+      - postgres
     restart: unless-stopped
     container_name: metastore
     environment:
@@ -238,18 +246,6 @@ services:
     volumes:
       - ./hive/warehouse:/opt/hive/data/warehouse
 
-  huedb:
-    image: postgres:16
-    volumes:
-      - ./hue/data:/var/lib/postgresl/data/
-    ports:
-      - 5432
-    environment:
-      POSTGRES_DB: 'hue'
-      POSTGRES_USER: 'hue'
-      POSTGRES_PASSWORD: 'hue'
-      SERVICE_PRECONDITION: "namenode:9870 datanode1:9864 datanode2:9864 resourcemanager:8088 metastore:9083"
-
   hue:
     image: gethue/hue:latest
     environment:
@@ -259,4 +255,4 @@ services:
     volumes:
       - ./hue/hue.ini:/usr/share/hue/desktop/conf/hue-overrides.ini
     depends_on:
-      - huedb
+      - postgres

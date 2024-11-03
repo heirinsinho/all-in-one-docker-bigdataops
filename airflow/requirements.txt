@@ -4,3 +4,4 @@ apache-airflow-providers-ssh==3.12.0
 hdfs==2.7.3
 pyspark==3.4.3
 pyarrow==10.0.1
+kafka-python

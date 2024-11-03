@@ -70,11 +70,11 @@
     </property>
     <property>
         <name>javax.jdo.option.ConnectionUserName</name>
-        <value>hive</value>
+        <value>postgres</value>
     </property>
     <property>
         <name>javax.jdo.option.ConnectionPassword</name>
-        <value>password</value>
+        <value>postgres</value>
     </property>
     <property>
         <name>hive.metastore.schema.verification</name>

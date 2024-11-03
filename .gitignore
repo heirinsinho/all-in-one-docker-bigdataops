@@ -170,3 +170,4 @@ cython_debug/
 /hive/warehouse/
 *.jar
 *.class
+/postgres/data/

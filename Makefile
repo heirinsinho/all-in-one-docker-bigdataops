@@ -10,7 +10,7 @@ else
 SPARK_CMD := curl -s https://downloads.apache.org/spark/ | grep -o 'spark-3\.[0-9]*\.[0-9]*' | sort -V | head -1 | sed "s/spark-//g"
 endif
 
-SPARK_VERSION := $(shell output=$$($(SPARK_CMD)); echo $${output:-"3.4.3"})
+SPARK_VERSION := $(shell output=$$($(SPARK_CMD)); echo $${output:-"3.4.4"})
 
 print-spark-version:
 	@echo Detected OS: $(OS)
@@ -34,12 +34,12 @@ build-all: build-spark build-jupyter build-base-hadoop
 ensure-spark-logs:
 	@echo "Ensuring spark-logs dfs directory exists..."
 	@sleep 30
-	@docker exec namenode hdfs dfsadmin -safemode forceExit &> /dev/null
+	@docker exec namenode hdfs dfsadmin -safemode forceExit
 	@docker exec namenode hadoop fs -mkdir -p /shared/spark-logs
 
 clean-up:
-	@docker image prune -af &> /dev/null
-	@docker volume prune -af &> /dev/null
+	@docker image prune -af
+	@docker volume prune -af
 
 start-spark:
 	make build-spark
@@ -64,13 +64,15 @@ start-kafka:
 
 start-airflow:
 	@echo "Starting Airflow service..."
-	@docker-compose up -d --force-recreate --build airflow  &> /dev/null || exit 1
+	@docker-compose up -d --force-recreate --build postgres &> /dev/null || exit 1
+	@docker-compose up -d --force-recreate --build airflow &> /dev/null || exit 1
 	make clean-up
 
 start-hive:
 	make start-hadoop
 	@echo "Starting Hive and Hue services..."
-	@docker-compose up -d --force-recreate --build postgres-hive metastore hiveserver2 huedb hue  &> /dev/null || exit 1
+	@docker-compose up -d --force-recreate --build postgres &> /dev/null || exit 1
+	@docker-compose up -d --force-recreate --build metastore hiveserver2 hue &> /dev/null || exit 1
 	make clean-up
 
 start-all: start-hive start-airflow start-kafka
