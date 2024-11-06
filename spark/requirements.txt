@@ -2,3 +2,5 @@ ipython
 pandas
 pyarrow
 numpy
+scikit-learn
+joblib
