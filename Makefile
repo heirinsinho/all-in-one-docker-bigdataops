@@ -65,6 +65,7 @@ start-kafka:
 start-airflow:
 	@echo "Starting Airflow service..."
 	@docker-compose up -d --force-recreate --build postgres &> /dev/null || exit 1
+	@sleep 30
 	@docker-compose up -d --force-recreate --build airflow &> /dev/null || exit 1
 	make clean-up
 
@@ -72,6 +73,7 @@ start-hive:
 	make start-hadoop
 	@echo "Starting Hive and Hue services..."
 	@docker-compose up -d --force-recreate --build postgres &> /dev/null || exit 1
+	@sleep 30
 	@docker-compose up -d --force-recreate --build metastore hiveserver2 hue &> /dev/null || exit 1
 	make clean-up
 

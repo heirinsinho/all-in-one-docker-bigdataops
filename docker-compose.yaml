@@ -174,8 +174,6 @@ services:
       - -c
       - airflow db init &&
         airflow users create --role Admin --username admin --password admin --email admin@airflow.com --firstname admin --lastname admin &&
-        airflow connections add 'spark_docker' --conn-type spark --conn-host spark://spark-master --conn-port 7077 &&
-        airflow connections add 'ssh_hadoop' --conn-type ssh --conn-host namenode --conn-port 22 --conn-login root --conn-password root123 &&
         airflow standalone
     ports:
       - 8090:8080
@@ -247,9 +245,10 @@ services:
       - ./hive/warehouse:/opt/hive/data/warehouse
 
   hue:
+    container_name: hue
     image: gethue/hue:latest
     environment:
-      SERVICE_PRECONDITION: "namenode:9870 datanode1:9864 datanode2:9864 resourcemanager:8088 metastore:9083"
+      SERVICE_PRECONDITION: "namenode:9870 datanode1:9864 datanode2:9864 resourcemanager:8088 metastore:9083 postgres:5432"
     ports:
       - "9999:8888"
     volumes:

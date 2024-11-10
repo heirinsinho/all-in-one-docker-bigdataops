@@ -11,12 +11,15 @@
 
 ### Why Use This Repository?
 - **Ease of Use**: Simplifies the setup process, so you can focus on developing and testing your big data solutions.
-- **All-in-One Solution**: No need to piece together different tools—everything is bundled in a single, cohesive package.
+- **All-in-One Solution**: No need to piece together different tools. Everything is bundled in a single, cohesive package.
 - **Community-Driven**: Designed to be accessible, well-documented, and easy to discover, with the goal of becoming a go-to resource for Big DataOps on Docker.
 
 ### How to use?
 - Ensure you have docker installed + make 
 - You can find useful commands in Makefile
+- When using airflow, remember to add the following connections:
+  - conn_id 'spark_docker' --conn-type spark --conn-host spark://spark-master --conn-port 7077
+  - conn_id 'ssh_hadoop' --conn-type ssh --conn-host namenode --conn-port 22 --conn-login root --conn-password root123
 - In case you want to deploy the full infrastructure, just:
 ```
 make start-all

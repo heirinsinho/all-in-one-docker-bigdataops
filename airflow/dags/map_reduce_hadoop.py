@@ -37,8 +37,8 @@ with DAG('MapReduceHadoop',
         task_id='upload_to_hdfs',
         python_callable=hdfs_upload,
         op_kwargs=dict(
-            input_path='/opt/airflow/data/input/test/input-data.json',
-            output_path='/data/input/test')
+            input_path='/opt/airflow/data/input/word_count/word_count.txt',
+            output_path='/data/input/word_count')
     )
 
     ssh_mapreduce = SSHOperator(
