@@ -29,7 +29,12 @@ build-base-hadoop:
 	@echo "Building Hadoop Base..."
 	@docker build --platform linux/amd64 -t local-base-hadoop:latest ./hadoop/base &> /dev/null || exit 1
 
-build-all: build-spark build-jupyter build-base-hadoop
+build-airflow:
+	@echo "Building Airflow Base..."
+	@docker build --platform linux/amd64 -t base-airflow:latest --build-arg spark_version=$(SPARK_VERSION) ./airflow &> /dev/null || exit 1
+
+
+build-all: build-spark build-jupyter build-base-hadoop build-airflow
 
 ensure-spark-logs:
 	@echo "Ensuring spark-logs dfs directory exists..."
@@ -63,9 +68,10 @@ start-kafka:
 	make clean-up
 
 start-airflow:
-	@echo "Starting Airflow service..."
 	@docker-compose up -d --force-recreate --build postgres &> /dev/null || exit 1
-	@sleep 30
+	@sleep 5
+	make build-airflow
+	@echo "Starting Airflow service..."
 	@docker-compose up -d --force-recreate --build airflow &> /dev/null || exit 1
 	make clean-up
 

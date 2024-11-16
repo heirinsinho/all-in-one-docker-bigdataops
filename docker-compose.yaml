@@ -22,7 +22,7 @@ services:
     env_file:
       - ./spark/.env
     volumes:
-      - ./spark/spark-defaults-history.conf:/opt/spark/conf/spark-defaults.conf
+      - ./spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
     ports:
       - 18080:18080
 
@@ -159,10 +159,9 @@ services:
       KAFKA_BROKER_ID: 2
 
   airflow:
+    platform: linux/amd64
     container_name: airflow
-    build:
-      context: ./airflow
-      dockerfile: Dockerfile
+    image: base-airflow:latest
     entrypoint: /bin/bash
     depends_on:
       - postgres
@@ -196,6 +195,8 @@ services:
     volumes:
       - ./jupyter/notebooks:/home/jovyan/notebooks
       - ./jupyter/data:/home/jovyan/data
+      - ./common/utils:/home/jovyan/utils
+      - ./common/postgresql-42.7.4.jar:/home/jovyan/postgresql.jar
 
   postgres:
     image: postgres:16
@@ -225,7 +226,7 @@ services:
       - '9083:9083'
     volumes:
       - ./hive/warehouse:/opt/hive/data/warehouse
-      - ./hive/postgresql-42.7.4.jar:/opt/hive/lib/postgres.jar
+      - ./common/postgresql-42.7.4.jar:/opt/hive/lib/postgres.jar
       - ./hive/hive-site.xml:/opt/hive/conf/hive-site.xml
 
   hiveserver2:
@@ -245,6 +246,7 @@ services:
       - ./hive/warehouse:/opt/hive/data/warehouse
 
   hue:
+    platform: linux/amd64
     container_name: hue
     image: gethue/hue:latest
     environment:

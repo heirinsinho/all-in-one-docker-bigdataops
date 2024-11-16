@@ -33,7 +33,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
 
-    spark = SparkSession.builder.appName("SparkPipeline").getOrCreate()
+    spark = SparkSession.builder.appName("SparkPipelineBusTripsStats").getOrCreate()
     df = spark.read.parquet("hdfs://namenode:9000/output/bus_trips/intermediate")
 
     main(df)

@@ -41,7 +41,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
 
-    spark = SparkSession.builder.appName("SparkPipeline").getOrCreate()
+    spark = SparkSession.builder.appName("SparkPipelineBusTripsIntermediate").getOrCreate()
     df = spark.read \
         .option("header", "true") \
         .csv("hdfs://namenode:9000/input/data/bus_trips.csv")

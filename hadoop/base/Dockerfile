@@ -1,7 +1,6 @@
 FROM debian:11
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-      ca-certificates \
+RUN apt-get update && dpkg --configure -a && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       net-tools \
       curl \
       wget \
@@ -9,11 +8,13 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
       gnupg \
       libsnappy-dev \
       openssh-server \
+      ca-certificates \
     && mkdir -p /etc/apt/keyrings \
     && wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | tee /etc/apt/keyrings/adoptium.asc \
     && echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | tee /etc/apt/sources.list.d/adoptium.list \
     && apt-get -y update \
     && apt-get install -y --no-install-recommends temurin-8-jdk \
+    && apt-get install -f \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/*
 

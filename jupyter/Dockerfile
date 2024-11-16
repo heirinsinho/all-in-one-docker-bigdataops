@@ -2,7 +2,7 @@ FROM jupyter/base-notebook:x86_64-python-3.11.6
 
 USER root
 RUN dpkg --configure -a && apt-get update && apt-get upgrade -y \
-  && apt-get install -y --no-install-recommends curl gcc openjdk-11-jdk
+  && apt-get install -y --no-install-recommends curl gcc openjdk-11-jdk ncat
 
 ENV SPARK_HOME=${SPARK_HOME:-"/opt/spark"}
 ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/"

@@ -6,3 +6,4 @@ protobuf<5
 grpcio_status
 scikit-learn
 joblib
+kafka-python

@@ -19,7 +19,8 @@ RUN export JAVA_HOME
 
 USER airflow
 RUN pip install -r requirements.txt
-
-COPY dags/utils/utils.py utils.py
+ARG spark_version
+ENV PYSPARK_VERSION="pyspark==${spark_version}"
+RUN pip install ${PYSPARK_VERSION}
 
 CMD ["webserver"]
