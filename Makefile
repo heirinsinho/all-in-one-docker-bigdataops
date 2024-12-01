@@ -43,22 +43,22 @@ ensure-spark-logs:
 	@docker exec namenode hadoop fs -mkdir -p /shared/spark-logs
 
 clean-up:
-	@docker image prune -af
-	@docker volume prune -af
+	@docker image prune -f &> /dev/null
+	@docker volume prune -f &> /dev/null
 
 start-spark:
 	make build-spark
 	make build-jupyter
 	make build-base-hadoop
 	@echo "Starting Spark and Jupyter services..."
-	@docker-compose up -d --force-recreate --build --scale spark-worker=2 spark-master spark-worker jupyter namenode datanode1 datanode2 &> /dev/null || exit 1
+	@docker-compose up -d --force-recreate --build --scale spark-worker=2 spark-master spark-worker jupyter namenode datanode1 datanode2 spark-history-server &> /dev/null || exit 1
 	make clean-up
 
 start-hadoop:
 	make start-spark
 	make build-base-hadoop
 	@echo "Starting Hadoop services..."
-	@docker-compose up -d --force-recreate --build namenode datanode1 datanode2 nodemanager resourcemanager historyserver spark-history-server &> /dev/null || exit 1
+	@docker-compose up -d --force-recreate --build namenode datanode1 datanode2 nodemanager resourcemanager historyserver &> /dev/null || exit 1
 	make clean-up
 	make ensure-spark-logs
 
@@ -69,7 +69,7 @@ start-kafka:
 
 start-airflow:
 	@docker-compose up -d --force-recreate --build postgres &> /dev/null || exit 1
-	@sleep 5
+	@sleep 15
 	make build-airflow
 	@echo "Starting Airflow service..."
 	@docker-compose up -d --force-recreate --build airflow &> /dev/null || exit 1
@@ -79,8 +79,9 @@ start-hive:
 	make start-hadoop
 	@echo "Starting Hive and Hue services..."
 	@docker-compose up -d --force-recreate --build postgres &> /dev/null || exit 1
-	@sleep 30
+	@sleep 15
 	@docker-compose up -d --force-recreate --build metastore hiveserver2 hue &> /dev/null || exit 1
 	make clean-up
 
+start-streaming: start-spark start-kafka
 start-all: start-hive start-airflow start-kafka
