@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Madrid Real-Time Moblity Status</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <style>
+        #map {
+            height: 98vh;
+            width: 100%;
+        }
+        .overlay-header {
+            position: absolute;
+            top: 10px;
+            left: 15%;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 1.3rem;
+            font-family: system-ui;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay-header">
+        <h1>MadFlow</h1>
+        <h2>Madrid Real-Time Moblity Status</h2>
+    </div>
+    <div id="map"></div>
+    <script>
+        let heatmapData = [];
+        const pointMap = {};
+
+        // Initialize Leaflet map
+        const map = L.map('map').setView([40.4168, -3.7038], 12); // Center on Madrid
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Initialize heatmap layer
+        const heatmapLayer = L.heatLayer([], {
+            radius: 10,      // Radius of influence
+            blur: 5,        // Blur intensity
+            maxZoom: 12,     // Maximum zoom level where the heatmap is displayed
+            max: 1000        // Maximum value for scaling heat intensity
+        }).addTo(map);
+
+        const ws = new WebSocket("ws://localhost:3000/ws");
+
+        ws.onmessage = function (event) {
+            const data = JSON.parse(event.data);
+            console.log("MESSAGE")
+            console.log(data)
+            const { latitude, longitude, value } = data;
+            const key = `${latitude},${longitude}`;
+
+            if (pointMap[key]) {
+                pointMap[key] = value;
+            } else {
+                pointMap[key] = value;
+                heatmapData.push([latitude, longitude, value]);
+            }
+
+            updateHeatmap();
+        };
+
+        function updateHeatmap() {
+            const cleanedData = Object.entries(pointMap).map(([key, value]) => {
+                const [lat, lng] = key.split(',').map(Number);
+                return [lat, lng, value];
+            });
+
+            // Update the heatmap layer with cleaned data
+            heatmapLayer.setLatLngs(cleanedData);
+
+            let avg_city = cleanedData.map(x=>x[2]).reduce((a,b) => a + b)/cleanedData.length
+            console.log("AVG CITY")
+            console.log(avg_city)
+        }
+
+    </script>
+</body>
+</html>

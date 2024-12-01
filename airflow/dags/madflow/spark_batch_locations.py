@@ -1,20 +1,18 @@
-from pyspark.sql.types import StructType, StringType, DateType, FloatType
-from pyspark.sql.functions import lit, col, udf, year, month
-from datetime import datetime
-import os
 from pyspark.sql import SparkSession
+from pyspark.sql.types import StructType, StringType, DateType, FloatType
+from pyspark.sql import functions as F
+from datetime import datetime
 
-# spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.1 hdfs_points-ingestion.py
 spark = SparkSession\
         .builder\
+        .master("spark://spark-master:7077")\
         .appName("hdfs_points-ingestion-application")\
         .getOrCreate()
 spark.sparkContext.setLogLevel('WARN')
 
-points_csv_path = os.path.join('Users/alberto/TFM/Madflow/data', 'points_traffic_2020-03-31.csv')
 date = "2020-03-31"
 
-func = udf(lambda x: datetime.strptime(x, '%Y-%m-%d'), DateType())
+func = F.udf(lambda x: datetime.strptime(x, '%Y-%m-%d'), DateType())
 
 
 schema = StructType() \
@@ -33,12 +31,12 @@ points = spark.read \
     .option("header", True) \
     .option("delimiter", ";") \
     .schema(schema) \
-    .load("file:///" + points_csv_path)
+    .load("hdfs://namenode:9000/data/input/madflow/points_traffic_2020-10-31.csv")
 
 
-points_date = points.withColumn("date", lit(date)).withColumn('date', func(col('date')))
-points_partition = points_date.withColumn("year", year(col("date"))) \
-    .withColumn("month", month(col("date")))
+points_date = points.withColumn("date", F.lit(date)).withColumn('date', func(F.col('date')))
+points_partition = points_date.withColumn("year", F.year(F.col("date"))) \
+    .withColumn("month", F.month(F.col("date")))
 
 
-points_partition.write.partitionBy("year","month").mode("append").parquet("/user/alberto/madflow/traffic/locations")
+points_partition.write.partitionBy("year","month").mode("append").parquet("hdfs://namenode:9000/output/madflow/traffic/locations")

@@ -194,8 +194,6 @@ services:
     volumes:
       - ./jupyter/notebooks:/home/jovyan/notebooks
       - ./jupyter/data:/home/jovyan/data
-      - ./common/utils:/home/jovyan/utils
-      - ./common/postgresql-42.7.4.jar:/home/jovyan/postgresql.jar
 
   postgres:
     image: postgres:16
@@ -225,7 +223,7 @@ services:
       - '9083:9083'
     volumes:
       - ./hive/warehouse:/opt/hive/data/warehouse
-      - ./common/postgresql-42.7.4.jar:/opt/hive/lib/postgres.jar
+      - ./hive/postgresql-42.7.4.jar:/opt/hive/lib/postgres.jar
       - ./hive/hive-site.xml:/opt/hive/conf/hive-site.xml
 
   hiveserver2:

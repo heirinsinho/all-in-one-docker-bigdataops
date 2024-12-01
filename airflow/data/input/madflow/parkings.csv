@@ -1,0 +1,74 @@
+id;name;address;postalCode;isEmtPark;lastUpd;freeParking;geometry;datetime
+2;Colón;Plaza de Colón s/n;;False;2020-05-19T12:05:27.357000;;{'type': 'Point', 'coordinates': ['-3.6899392', '40.4247093']};2020-12-13T12:50:38.588182
+3;Corazón de María II;C/ Corazón de María (final calle);;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6455254', '40.4385248']};2020-12-13T12:50:38.588182
+4;Encuentro;Plaza Encuentro;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6513541', '40.4054645']};2020-12-13T12:50:38.588182
+5;Nuestra Señora del Recuerdo;c/ Hiedra, 26;28036 ;True;2020-12-13T12:50:00.173000;622;{'type': 'Point', 'coordinates': ['-3.679160', '40.472181']};2020-12-13T12:50:38.588182
+6;Corona Boreal;Plaza Corona Boreal y C/ Marqués Camarines;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.7832', '40.4568']};2020-12-13T12:50:38.588182
+7;Avenida de Portugal;Avda. de Portugal, s/n. Frente al nº 51;28011 ;True;2020-12-13T12:50:25.237000;363;{'type': 'Point', 'coordinates': ['-3.727515', '40.415415']};2020-12-13T12:50:38.588182
+8;Plaza del Carmen;Plaza del Carmen;;False;2020-05-11T12:20:41.243000;;{'type': 'Point', 'coordinates': ['-3.7034468', '40.4185861']};2020-12-13T12:50:38.588182
+9;Paseo de Recoletos;Paseo de Recoletos, 4;28001 ;True;2020-12-13T12:50:05.303000;207;{'type': 'Point', 'coordinates': ['-3.691953', '40.421191']};2020-12-13T12:50:38.588182
+10;Condesa de Gavia;Plaza Condesa de Gavia;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.7019123', '40.4490039']};2020-12-13T12:50:38.588182
+12;Almagro;c/ Almagro, 11;28010 ;True;2020-12-13T12:49:32.947000;375;{'type': 'Point', 'coordinates': ['-3.692950', '40.430390']};2020-12-13T12:50:38.588182
+14;Luna-Tudescos;P. Sta Mª Soledad Torres Acosta c/v c/Luna);;False;2020-12-13T12:49:43.997000;362;{'type': 'Point', 'coordinates': ['-3.7049889', '40.4215407']};2020-12-13T12:50:38.588182
+15;Jacinto Benavente;Plaza Jacinto Benavente, s/n;28012 ;True;2020-12-13T12:49:16.533000;71;{'type': 'Point', 'coordinates': ['-3.703448', '40.414267']};2020-12-13T12:50:38.588182
+16;América;Avda. América (intercambiador);;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.67669', '40.4380932']};2020-12-13T12:50:38.588182
+17;Arquitecto Ribera (Barceló);C/ Barceló, 2;;False;2020-12-13T12:49:45.037000;178;{'type': 'Point', 'coordinates': ['-3.700464', '40.426411']};2020-12-13T12:50:38.588182
+18;Brasil;Avda. Brasil (entre General Yagüe y Pedro Texeira);;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.69374', '40.45615']};2020-12-13T12:50:38.588182
+19;Casino de la Reina;C/ Casino;;False;2020-12-13T12:49:45.517000;2;{'type': 'Point', 'coordinates': ['-3.70545010', '40.4066596']};2020-12-13T12:50:38.588182
+20;Descalzas;Plaza Descalzas y Plaza San Martín;;False;2020-12-13T12:49:46.220000;270;{'type': 'Point', 'coordinates': ['-3.707072', '40.418441']};2020-12-13T12:50:38.588182
+21;Palacio Municipal de Congresos;Avda. Capital de España, s/n;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6160214', '40.46190431']};2020-12-13T12:50:38.588182
+22;Orense;Avda. General Perón, 27;28020 ;True;2020-12-13T12:50:14.837000;118;{'type': 'Point', 'coordinates': ['-3.694009', '40.453019']};2020-12-13T12:50:38.588182
+23;Daoíz y Velarde;Avda. Ciudad de Barcelona ( C/ Alberche y C/ Téllez);;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6784287', '40.4030883']};2020-12-13T12:50:38.588182
+25;Marqués de Salamanca;Plaza Marques de Salamanca, s/n;28006 ;True;2020-12-13T12:49:55.020000;267;{'type': 'Point', 'coordinates': ['-3.679197', '40.430293']};2020-12-13T12:50:38.588182
+26;Felipe II;Avda. Felipe II y C/ Goya);;False;2019-01-27T09:58:12.837000;;{'type': 'Point', 'coordinates': ['-3.67567', '40.424015']};2020-12-13T12:50:38.588182
+27;Fuencarral;C/ Fuencarral, 111 (entre 111 Y 121);;True;2020-12-13T12:49:44.233000;202;{'type': 'Point', 'coordinates': ['-3.702573', '40.4294714']};2020-12-13T12:50:38.588182
+28;General Yagüe;Avda. Brasil, 15 Nº15 al 19;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6939585', '40.4543339']};2020-12-13T12:50:38.588182
+29;Hernani;C/ Hernani (entre C/ Orense y Comandante Zorita);;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6999184', '40.4482467']};2020-12-13T12:50:38.588182
+30;José Castán Tobeñas;C/ José Castán Tobeñas;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.69225', '40.46473']};2020-12-13T12:50:38.588182
+31;Miguel Yuste;C/ Miguel Yuste s/n;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.62371', '40.43733']};2020-12-13T12:50:38.588182
+32;Plaza de Oriente;Plaza de Oriente, 1;;False;2020-12-13T12:49:48.220000;49;{'type': 'Point', 'coordinates': ['-3.71305556', '40.42000000']};2020-12-13T12:50:38.588182
+33;Presidente Carmona;Avda. Presidente Carmona;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.697261', '40.4541445']};2020-12-13T12:50:38.588182
+35;Reyes Magos;Plaza Reyes Magos;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6759568', '40.4089554']};2020-12-13T12:50:38.588182
+36;San Cayetano;Plaza San Cayetano;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.670343', '40.434403']};2020-12-13T12:50:38.588182
+37;Sánchez Bustillo;C/ Sánchez Bustillo;;False;2020-12-13T12:49:49.207000;20;{'type': 'Point', 'coordinates': ['-3.6933423', '40.4088597']};2020-12-13T12:50:38.588182
+39;Serrano II;C/ Serrano entre Ortega y Gasset y Hermosilla;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.68715', '40.42865']};2020-12-13T12:50:38.588182
+40;Serrano III;C/ Serrano entre Jorge Juan y Pza. Independencia;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6884056', '40.4197583']};2020-12-13T12:50:38.588182
+41;Sevilla;C/ Sevilla y C/ Alcalá;;False;2020-11-11T15:14:02.377000;;{'type': 'Point', 'coordinates': ['-3.6992503', '40.418054']};2020-12-13T12:50:38.588182
+42;Velázquez Ayala;C/ Velázquez ( y C/ Ayala);;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.68379', '40.42761']};2020-12-13T12:50:38.588182
+43;Velázquez Jorge Juan;C/ Velázquez ( y C/ Jorge Juan);;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6771486', '40.4234377']};2020-12-13T12:50:38.588182
+44;Verdaguer y García;C/ Verdaguer y García;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6546779', '40.4403579']};2020-12-13T12:50:38.588182
+45;Auditorio;C/ Príncipe de Vergara (Junto Auditorio);;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6801218', '40.4229427']};2020-12-13T12:50:38.588182
+46;Cortes;Plaza de las Cortes;;False;2020-12-13T12:49:51.223000;300;{'type': 'Point', 'coordinates': ['-3.6958823', '40.4156855']};2020-12-13T12:50:38.588182
+47;Fernández Shaw;C/ Carlos y Guillermo Fernández Shaw;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.668314', '40.4043224']};2020-12-13T12:50:38.588182
+49;Montalbán;C/ Montalbán (entre C/ Alfonso XI y Pº Prado);;True;2020-12-13T12:49:49.673000;0;{'type': 'Point', 'coordinates': ['-3.690707', '40.418161']};2020-12-13T12:50:38.588182
+50;Mostenses;Plaza Mostenses y C/ Ricardo León;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.7089974', '40.4235602']};2020-12-13T12:50:38.588182
+51;Museo de la ciudad;C/ Príncipe de Vergara, 152 ( y C/ Pechuán );;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6779271', '40.4474968']};2020-12-13T12:50:38.588182
+52;Olavide;Plaza de Olavide;;True;2020-12-13T12:49:38.447000;228;{'type': 'Point', 'coordinates': ['-3.7010275', '40.4326973']};2020-12-13T12:50:38.588182
+53;Plaza de España;Plaza de España;;True;2020-12-13T12:50:20.687000;404;{'type': 'Point', 'coordinates': ['-3.711583', '40.423636']};2020-12-13T12:50:38.588182
+54;Plaza del Rey;Plaza del Rey ( y C/ Barquillo C/V C/ Infantas);;False;2020-12-13T12:49:52.340000;106;{'type': 'Point', 'coordinates': ['-3.6963131', '40.4200305']};2020-12-13T12:50:38.588182
+55;Plaza Mayor;Plaza Mayor;;True;2020-12-13T12:50:10.350000;70;{'type': 'Point', 'coordinates': ['-3.7066676', '40.4152721']};2020-12-13T12:50:38.588182
+58;Velázquez Juan Bravo;C/ Velázquez ( y C/ Juán Bravo);;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6834', '40.4321']};2020-12-13T12:50:38.588182
+60;Díaz Porlier;C/Diego de León,64(Príncipe de Vergara-Cde. Peñalver);;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.675167', '40.4345198']};2020-12-13T12:50:38.588182
+61;República Dominicana;Pza Rep Dominicana C/Costa Rica y C/Alberto Alcocer;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.67647', '40.45869']};2020-12-13T12:50:38.588182
+62;Serrano I;C/Serrano entre Hnos. Becquer y Marq. de Villamejor;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.6872468', '40.4359971']};2020-12-13T12:50:38.588182
+63;Marqués de Urquijo;Marq de Urquijo(entre C/Princesa y J. Álv. Mendiz.;;False;2020-12-13T12:49:35.890000;;{'type': 'Point', 'coordinates': ['-3.7188502', '40.4298028']};2020-12-13T12:50:38.588182
+64;Puerta Toledo;Glorieta Puerta Toledo C/V Cptan. Salazar Martínez;;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.7110512', '40.407036']};2020-12-13T12:50:38.588182
+67;Villa de París;Plaza Villa de París;28004 ;True;2020-12-13T12:49:27.083000;74;{'type': 'Point', 'coordinates': ['-3.693658', '40.425848']};2020-12-13T12:50:38.588182
+68;Garaje Centro;C/ Relatores, 11;28012 ;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.703171', '40.413030']};2020-12-13T12:50:38.588182
+69;Barceló;C/ Barceló, s/n;;True;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.700366   ', '40.426438  ']};2020-12-13T12:50:38.588182
+71;Pedro Zerolo;Plaza Pedro Zerolo, s/n;28004 ;True;2020-12-13T12:49:21.697000;54;{'type': 'Point', 'coordinates': ['-3.699282', '40.420653']};2020-12-13T12:50:38.588182
+72;Metropolitano;Avenida Arcentales, 39 y Avenida Luis Aragonés, 4;28022 ;True;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.599316', '40.434216']};2020-12-13T12:50:38.588182
+73;Agustín Lara;Plaza Arturo Barea;28012 ;True;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.703414', '40.408628']};2020-12-13T12:50:38.588182
+75;GARAJE AMPARO;CALLE AMPARO;28012 ;False;2020-12-13T12:49:54.057000;39;{'type': 'Point', 'coordinates': ['-3.701445', '40.407933']};2020-12-13T12:50:38.588182
+77;PLAZA DE SANTA ANA;PZA. DE SANTA ANA;28014 ;False;2020-11-17T04:30:11.353000;;{'type': 'Point', 'coordinates': ['-3.700645', '40.414533']};2020-12-13T12:50:38.588182
+86;La Latina;Calle de Toledo;28005 ;False;2020-01-27T16:08:35.413000;;{'type': 'Point', 'coordinates': ['-3.710914', '40.408782']};2020-12-13T12:50:38.588182
+88;BARCO 1;Calle Barco;28004 ;False;2020-12-13T12:49:55.023000;31;{'type': 'Point', 'coordinates': ['-3.702918', '40.421107']};2020-12-13T12:50:38.588182
+89;GRAVINA 21;Calle Gravina;28004 ;False;2020-12-13T12:49:55.327000;8;{'type': 'Point', 'coordinates': ['-3.696436', '40.422704']};2020-12-13T12:50:38.588182
+91;Aparcamiento Escuelas de San Anton;SANTA BRIGIDA ;28004 ;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.699445', '40.424419']};2020-12-13T12:50:38.588182
+92;El Corte Inglés Callao;Plaza de Callao;28013 ;False;2020-10-14T16:05:09.430000;;{'type': 'Point', 'coordinates': ['-3.7055168', '40.4197702']};2020-12-13T12:50:38.588182
+93;El Corte Inglés Preciados;Calle Preciados;28013 ;False;2020-10-14T16:05:09.833000;;{'type': 'Point', 'coordinates': ['-3.7048936', '40.4182355']};2020-12-13T12:50:38.588182
+94;MERCADO SAN ANTON;LIBERTAD;28004 ;False;2020-12-13T12:49:56.373000;71;{'type': 'Point', 'coordinates': ['-3.697468', '40.421693']};2020-12-13T12:50:38.588182
+96;GARAJE PIAMONTE;PIAMONTE;28004 ;False;2020-12-13T12:49:56.690000;21;{'type': 'Point', 'coordinates': ['-3.694675', '40.423050']};2020-12-13T12:50:38.588182
+97;PARKING VOT;Ventosa;28005 ;False;2020-12-13T12:49:57.070000;46;{'type': 'Point', 'coordinates': ['-3.714779', '40.408671']};2020-12-13T12:50:38.588182
+98;ISABEL LA CATOLICA;Calle de Isabel la Católica;28007 ;False;01/01/1900T00:00:00;;{'type': 'Point', 'coordinates': ['-3.709122', '40.421829']};2020-12-13T12:50:38.588182
+501;Mercado de la Cebada;Plaza de la Cebada s/n;28005 ;False;2020-12-13T12:50:11.773000;42;{'type': 'Point', 'coordinates': ['-3.709082', '40.410490']};2020-12-13T12:50:38.588182

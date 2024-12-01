@@ -39,6 +39,8 @@ def send_traffic_events():
 
             # Envío del mensaje a kafka
             kafka_producer.send(topic=kafka_topic, key=row['idelem'].encode('utf-8'), value=json_row)
+            kafka_producer.flush()
+
         i = i + 1
         #Ajustamos el tiempo para que tarde unos 10 minutos en procesar cada csv y asegurarnos de que se actualiza
         time.sleep(0.14)

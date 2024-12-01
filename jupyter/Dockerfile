@@ -27,4 +27,18 @@ COPY ./requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 RUN pip install ${PYSPARK_VERSION}
 
+ENV SCALA_VERSION=2.12
+ENV POSTGRESQL_VERSION=42.7.4
+
+RUN curl -fsSL -o ${SPARK_HOME}/jars/postgresql-${POSTGRESQL_VERSION}.jar \
+        https://jdbc.postgresql.org/download/postgresql-${POSTGRESQL_VERSION}.jar && \
+    curl -fsSL -o ${SPARK_HOME}/jars/spark-sql-kafka-0-10_${SCALA_VERSION}-${spark_version}.jar \
+        https://repo1.maven.org/maven2/org/apache/spark/spark-sql-kafka-0-10_${SCALA_VERSION}/${spark_version}/spark-sql-kafka-0-10_${SCALA_VERSION}-${spark_version}.jar && \
+    curl -fsSL -o ${SPARK_HOME}/jars/kafka-clients-3.3.2.jar \
+        https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/3.3.2/kafka-clients-3.3.2.jar && \
+    curl -fsSL -o ${SPARK_HOME}/jars/spark-token-provider-kafka-0-10_${SCALA_VERSION}-${spark_version}.jar \
+        https://repo1.maven.org/maven2/org/apache/spark/spark-token-provider-kafka-0-10_${SCALA_VERSION}/${spark_version}/spark-token-provider-kafka-0-10_${SCALA_VERSION}-${spark_version}.jar && \
+    curl -fsSL -o ${SPARK_HOME}/jars/commons-pool2-2.12.0.jar \
+        https://repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.12.0/commons-pool2-2.12.0.jar
+
 ENTRYPOINT ["start-notebook.sh", "--NotebookApp.token=''"]

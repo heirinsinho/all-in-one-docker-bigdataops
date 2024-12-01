@@ -1,7 +1,7 @@
 from pyspark.sql.types import StringType, StructField, StructType, ArrayType, LongType
 from pyspark.sql import functions as F
 
-def flatten_df(df)
+def flatten_df(df):
     json_schema = (
         StructType(
         [StructField('customerId', StringType(), True), 
@@ -20,7 +20,8 @@ def flatten_df(df)
         StructField('eventTime', StringType(), True)
         ])
     )
-    
+
+    df = df.withColumn("value", F.expr("cast(value as string)"))
     df = df.withColumn("values_json", F.from_json(F.col("value"), json_schema)).selectExpr("values_json.*")
     exploded_df = df.withColumn("data_devices", F.explode("data.devices"))
     flattened_df = (

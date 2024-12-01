@@ -42,6 +42,8 @@ def send_bicimad_events():
 
             # Envío del mensaje a kafka
             kafka_producer.send(topic=kafka_topic, key=row['id'].encode('utf-8'), value=json_row)
+            kafka_producer.flush()
+
         i = i + 1
 
         # Ajustamos para actualizar aproximádamente cada 2 minutos

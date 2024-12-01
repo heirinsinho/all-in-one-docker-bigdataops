@@ -1,12 +1,43 @@
-from kafka import KafkaProducer
-
-import os
-import time
-import json
 import csv
+import json
+import time
 
-from utils import _json_to_csv
+from kafka import KafkaProducer
 from settings import config as conf
+
+
+def _json_to_csv(json_input, csv_output):
+    # Opening JSON file and loading the data
+    # into the variable data
+    with open(json_input) as json_file:
+        data = json.load(json_file)
+
+    json_datetime = data['datetime']
+    json_data = data['data']
+
+    # now we will open a file for writing
+    data_file = open(csv_output, 'w')
+
+    # create the csv writer object
+    csv_writer = csv.writer(data_file, delimiter=';')
+
+    # Counter variable used for writing
+    # headers to the CSV file
+    count = 0
+
+    for emp in json_data:
+        emp["datetime"] = json_datetime
+        if count == 0:
+            # Writing headers of CSV file
+            header = emp.keys()
+
+            csv_writer.writerow(header)
+            count += 1
+
+        # Writing data of CSV file
+        csv_writer.writerow(emp.values())
+
+    data_file.close()
 
 
 # Configurar y crear el productor kafka
@@ -35,14 +66,15 @@ def send_parking_events():
     for row in reader:
         # Descartamos la cabecera
         if i != 0:
-
             # Formateo del mensajea JSON
             json_row = json.dumps(row).encode('utf-8')
 
-            #print(json_row)
+            # print(json_row)
 
             # Envío del mensaje a kafka
             kafka_producer.send(topic=kafka_topic, key=row['id'].encode('utf-8'), value=json_row)
+            kafka_producer.flush()
+
         i = i + 1
 
         time.sleep(1)
@@ -55,4 +87,3 @@ while True:
     send_parking_events()
     # Paramos 5 minutos ya que los datos no se actualizan constantemente
     time.sleep(300)
-
