@@ -4,3 +4,4 @@ pyarrow
 numpy
 scikit-learn
 joblib
+requests

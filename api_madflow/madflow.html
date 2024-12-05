@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Madrid Real-Time Moblity Status</title>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <title>MADFLOW</title>
     <style>
-        #map {
-            height: 98vh;
-            width: 100%;
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
         .overlay-header {
             position: absolute;
             top: 10px;
-            left: 15%;
             background: rgba(255, 255, 255, 0.8);
             padding: 5px 10px;
             border-radius: 5px;
@@ -25,65 +28,87 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
     </style>
+    <!-- Include Deck.gl and supporting libraries -->
+    <script src="https://unpkg.com/@deck.gl/core@latest/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/layers@latest/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/aggregation-layers@latest/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/mapbox@latest/dist.min.js"></script>
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
 </head>
 <body>
     <div class="overlay-header">
         <h1>MadFlow</h1>
-        <h2>Madrid Real-Time Moblity Status</h2>
+        <h3>Madrid Real-Time Moblity Status</h3>
+        <h5 id="avg_city"></h5>
+        <h5 id="max_city"></h5>
     </div>
-    <div id="map"></div>
+    <div id="container"></div>
     <script>
-        let heatmapData = [];
         const pointMap = {};
 
-        // Initialize Leaflet map
-        const map = L.map('map').setView([40.4168, -3.7038], 12); // Center on Madrid
-
-        // Add OpenStreetMap tile layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // Initialize heatmap layer
-        const heatmapLayer = L.heatLayer([], {
-            radius: 10,      // Radius of influence
-            blur: 5,        // Blur intensity
-            maxZoom: 12,     // Maximum zoom level where the heatmap is displayed
-            max: 1000        // Maximum value for scaling heat intensity
-        }).addTo(map);
-
-        const ws = new WebSocket("ws://localhost:3000/ws");
-
-        ws.onmessage = function (event) {
-            const data = JSON.parse(event.data);
-            console.log("MESSAGE")
-            console.log(data)
-            const { latitude, longitude, value } = data;
-            const key = `${latitude},${longitude}`;
-
-            if (pointMap[key]) {
-                pointMap[key] = value;
-            } else {
-                pointMap[key] = value;
-                heatmapData.push([latitude, longitude, value]);
-            }
-
-            updateHeatmap();
+        // Initial view state
+        const INITIAL_VIEW_STATE = {
+            latitude: 40.4168,
+            longitude: -3.7038,
+            zoom: 11,
+            maxZoom: 20,
+            pitch: 10,
+            bearing: 0
         };
 
-        function updateHeatmap() {
-            const cleanedData = Object.entries(pointMap).map(([key, value]) => {
-                const [lat, lng] = key.split(',').map(Number);
-                return [lat, lng, value];
+        // Map style
+        const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json';
+
+        // Initialize the Deck.gl map
+        const deckInstance = new deck.DeckGL({
+            container: 'container',
+            mapStyle: MAP_STYLE,
+            map: maplibregl,
+            initialViewState: INITIAL_VIEW_STATE,
+            controller: true,
+            layers: []
+        });
+
+        // Render Heatmap
+        function renderHeatmap() {
+            const values = Object.values(pointMap)
+            const num_values = values.map(x => x.value)
+            const min_val = Math.min(...num_values)
+            const max_val = Math.max(...num_values)
+            const max_point = values[num_values.indexOf(max_val)].name
+            const avg_val = values.map(x => x.value).reduce((a, b) => a+b)/values.length
+            const data = values.map(x => {
+                return {"position": x.position, "value": x.value-min_val}
+            })
+            document.getElementById("avg_city").innerText = "Average Status: " + avg_val.toFixed(2) +  "%"
+            document.getElementById("max_city").innerText = "Worst Status: " max_val.toFixed(2) + "%" + " (" + max_point + ")"
+            const heatmapLayer = new deck.HeatmapLayer({
+                id: 'heatmap-layer',
+                data: data,
+                pickable: false,
+                aggregation: 'MEAN',
+                getPosition: d => d.position,
+                getWeight: d => d.value,
+                radiusPixels: 30,
+                intensity: 1,
+                opacity: 0.4,
+                weightsTextureSize: 512
             });
 
-            // Update the heatmap layer with cleaned data
-            heatmapLayer.setLatLngs(cleanedData);
-
-            let avg_city = cleanedData.map(x=>x[2]).reduce((a,b) => a + b)/cleanedData.length
-            console.log("AVG CITY")
-            console.log(avg_city)
+            deckInstance.setProps({ layers: [heatmapLayer] });
         }
+
+        const ws = new WebSocket("ws://localhost:3000/ws");
+        ws.onmessage = function (event) {
+            const data = JSON.parse(event.data);
+            const { id, name, longitude, latitude, occupancy } = data;
+            const value = occupancy*100
+            pointMap[id] = {position: [longitude, latitude],
+                            value: value,
+                            name: name};
+            renderHeatmap();
+        };
 
     </script>
 </body>

@@ -18,7 +18,6 @@ services:
     entrypoint: [ './entrypoint.sh', 'history' ]
     depends_on:
       - spark-master
-      - resourcemanager
     env_file:
       - ./spark/.env
     volumes:
@@ -35,11 +34,7 @@ services:
       - spark/.env
     volumes:
       - ./spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf
-    deploy:
-      resources:
-        limits:
-          cpus: '4'
-          memory: '5g'
+
 
   namenode:
     platform: linux/amd64
@@ -127,9 +122,8 @@ services:
       - namenode
       - datanode1
       - datanode2
-      - resourcemanager
     environment:
-      SERVICE_PRECONDITION: 'namenode:9870 datanode1:9864 datanode2:9864 resourcemanager:8088'
+      SERVICE_PRECONDITION: 'namenode:9870 datanode1:9864 datanode2:9864'
     env_file:
       - ./hadoop/.env
 

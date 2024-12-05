@@ -7,3 +7,4 @@ grpcio_status
 scikit-learn
 joblib
 kafka-python
+requests

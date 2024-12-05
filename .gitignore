@@ -172,3 +172,4 @@ cython_debug/
 *.class
 /postgres/data/
 mobilitylabs.env
+/jupyter/notebooks/madflow/traffic/*

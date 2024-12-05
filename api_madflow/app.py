@@ -24,21 +24,21 @@ async def websocket_endpoint(websocket: WebSocket):
 
     consumer = AIOKafkaConsumer(topic,
                                 bootstrap_servers=f"{host}:{port}",
-                                auto_offset_reset="latest")
-
-    await websocket.accept()
-    while True:
-        await consumer.start()
-        try:
+                                auto_offset_reset="earliest")
+    try:
+        await websocket.accept()
+        while True:
+            await consumer.start()
             async for msg in consumer:
                 await websocket.send_text(msg.value.decode("utf-8"))
-        finally:
-            await consumer.stop()
+
+    except Exception:
+        pass
 
 
 if __name__ == '__main__':
 
-    os.environ["KAFKA_TOPIC"] = "bicimad"
+    os.environ["KAFKA_TOPIC"] = "madflow-output-stream"
     os.environ["KAFKA_HOST"] = "localhost"
     os.environ["KAFKA_PORT"] = "9094"
 
