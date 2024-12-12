@@ -58,13 +58,15 @@ kafka_parkings = kafka_parkings.select("parsed_value.*")
 kafka_traffic = kafka_traffic.select(F.from_json(kafka_traffic.value, kafkaSchema).alias("parsed_value"))
 kafka_traffic = kafka_traffic.select("parsed_value.*")
 
-cond1 = F.sqrt(F.pow(static_poi.longitude-kafka_traffic.longitude, 2) + F.pow(static_poi.latitude-kafka_traffic.latitude, 2)) < 0.1
+# 0.58 is a factor of latitude correction cos(40.4º)^2.
+# This expression is equivalent to belong to a radius of 500m around the point
+cond1 = F.sqrt(0.58*F.pow(static_poi.longitude-kafka_traffic.longitude, 2) + F.pow(static_poi.latitude-kafka_traffic.latitude, 2)) < 0.0045
 df1 = static_poi.join(kafka_traffic, on=cond1).drop(kafka_traffic.longitude, kafka_traffic.latitude, kafka_traffic.id)
 
-cond2 = F.sqrt(F.pow(static_poi.longitude-kafka_parkings.longitude, 2) + F.pow(static_poi.latitude-kafka_parkings.latitude, 2)) < 0.1
+cond2 = F.sqrt(0.58*F.pow(static_poi.longitude-kafka_parkings.longitude, 2) + F.pow(static_poi.latitude-kafka_parkings.latitude, 2)) < 0.0045
 df2 = static_poi.join(kafka_parkings, on=cond2).drop(kafka_parkings.longitude, kafka_parkings.latitude, kafka_parkings.id)
 
-cond3 = F.sqrt(F.pow(static_poi.longitude-kafka_bicimad.longitude, 2) + F.pow(static_poi.latitude-kafka_bicimad.latitude, 2)) < 0.1
+cond3 = F.sqrt(0.58*F.pow(static_poi.longitude-kafka_bicimad.longitude, 2) + F.pow(static_poi.latitude-kafka_bicimad.latitude, 2)) < 0.0045
 df3 = static_poi.join(kafka_bicimad, on=cond3).drop(kafka_bicimad.longitude, kafka_bicimad.latitude, kafka_bicimad.id)
 
 df = df1.unionByName(df2).unionByName(df3)

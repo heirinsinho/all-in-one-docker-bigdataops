@@ -6,7 +6,6 @@ import time
 import requests
 import json
 
-url_parking_details = "https://openapi.emtmadrid.es/v1/citymad/places/parking/{parking_id}/ES"
 url_parkings_availability = "https://openapi.emtmadrid.es/v3/citymad/places/parkings/availability"
 url_traffic = "https://informo.madrid.es/informo/tmadrid/pm.xml"
 url_bicimad_stations = "https://openapi.emtmadrid.es/v2/transport/bicimad/stations"
@@ -123,6 +122,6 @@ def start_producers():
 if __name__ == '__main__':
 
     topic_names=["bicimad", "parkings", "traffic", "bicimad-output-stream",
-                         "parkings-output-stream", "traffic-output-stream", "madflow-output-stream"]
+                 "parkings-output-stream", "traffic-output-stream", "madflow-output-stream"]
     create_kafka_topics(topic_names)
     start_producers()

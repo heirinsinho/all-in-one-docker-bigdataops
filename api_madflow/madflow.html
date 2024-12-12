@@ -34,82 +34,81 @@
     <script src="https://unpkg.com/@deck.gl/aggregation-layers@latest/dist.min.js"></script>
     <script src="https://unpkg.com/@deck.gl/mapbox@latest/dist.min.js"></script>
     <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
-    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet"/>
 </head>
 <body>
-    <div class="overlay-header">
-        <h1>MadFlow</h1>
-        <h3>Madrid Real-Time Moblity Status</h3>
-        <h5 id="avg_city"></h5>
-        <h5 id="max_city"></h5>
-    </div>
-    <div id="container"></div>
-    <script>
-        const pointMap = {};
+<div class="overlay-header">
+    <h1>MadFlow</h1>
+    <h3>Madrid Real-Time Moblity Status</h3>
+    <h5 id="avg_city"></h5>
+    <h5 id="max_city"></h5>
+</div>
+<div id="container"></div>
+<script>
+    const pointMap = {};
 
-        // Initial view state
-        const INITIAL_VIEW_STATE = {
-            latitude: 40.4168,
-            longitude: -3.7038,
-            zoom: 11,
-            maxZoom: 20,
-            pitch: 10,
-            bearing: 0
-        };
+    // Initial view state
+    const INITIAL_VIEW_STATE = {
+        latitude: 40.4168,
+        longitude: -3.7038,
+        zoom: 11,
+        maxZoom: 20,
+        pitch: 10,
+        bearing: 0
+    };
 
-        // Map style
-        const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json';
+    // Map style
+    const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json';
 
-        // Initialize the Deck.gl map
-        const deckInstance = new deck.DeckGL({
-            container: 'container',
-            mapStyle: MAP_STYLE,
-            map: maplibregl,
-            initialViewState: INITIAL_VIEW_STATE,
-            controller: true,
-            layers: []
+    // Initialize the Deck.gl map
+    const deckInstance = new deck.DeckGL({
+        container: 'container',
+        mapStyle: MAP_STYLE,
+        map: maplibregl,
+        initialViewState: INITIAL_VIEW_STATE,
+        controller: true,
+        layers: []
+    });
+
+    // Render Heatmap
+    function renderHeatmap() {
+        const values = Object.values(pointMap);
+        const num_values = values.map(x => x.value);
+        const min_val = Math.min(...num_values);
+        const max_val = Math.max(...num_values);
+        const max_point = values[num_values.indexOf(max_val)].name;
+        const avg_val = values.map(x => x.value).reduce((a, b) => a+b)/values.length;
+        const data = values.map(x => {
+            return {"position": x.position, "value": x.value-min_val}
+        });
+        document.getElementById("avg_city").innerText = "Average Status: " + avg_val.toFixed(2) +  "%";
+        document.getElementById("max_city").innerText = "Worst Status: " + max_val.toFixed(2) + "%" + " (" + max_point + ")";
+        const heatmapLayer = new deck.HeatmapLayer({
+            id: 'heatmap-layer',
+            data: data,
+            pickable: false,
+            aggregation: 'MEAN',
+            getPosition: d => d.position,
+            getWeight: d => d.value,
+            radiusPixels: 30,
+            intensity: 1,
+            opacity: 0.4,
+            weightsTextureSize: 512
         });
 
-        // Render Heatmap
-        function renderHeatmap() {
-            const values = Object.values(pointMap)
-            const num_values = values.map(x => x.value)
-            const min_val = Math.min(...num_values)
-            const max_val = Math.max(...num_values)
-            const max_point = values[num_values.indexOf(max_val)].name
-            const avg_val = values.map(x => x.value).reduce((a, b) => a+b)/values.length
-            const data = values.map(x => {
-                return {"position": x.position, "value": x.value-min_val}
-            })
-            document.getElementById("avg_city").innerText = "Average Status: " + avg_val.toFixed(2) +  "%"
-            document.getElementById("max_city").innerText = "Worst Status: " max_val.toFixed(2) + "%" + " (" + max_point + ")"
-            const heatmapLayer = new deck.HeatmapLayer({
-                id: 'heatmap-layer',
-                data: data,
-                pickable: false,
-                aggregation: 'MEAN',
-                getPosition: d => d.position,
-                getWeight: d => d.value,
-                radiusPixels: 30,
-                intensity: 1,
-                opacity: 0.4,
-                weightsTextureSize: 512
-            });
+        deckInstance.setProps({ layers: [heatmapLayer] });
+    };
 
-            deckInstance.setProps({ layers: [heatmapLayer] });
-        }
-
-        const ws = new WebSocket("ws://localhost:3000/ws");
-        ws.onmessage = function (event) {
-            const data = JSON.parse(event.data);
-            const { id, name, longitude, latitude, occupancy } = data;
-            const value = occupancy*100
-            pointMap[id] = {position: [longitude, latitude],
-                            value: value,
-                            name: name};
-            renderHeatmap();
-        };
-
-    </script>
+    const ws = new WebSocket("ws://localhost:3000/ws");
+    ws.onmessage = function (event) {
+        const data = JSON.parse(event.data);
+        const { id, name, longitude, latitude, occupancy } = data;
+        const value = occupancy*100;
+        pointMap[id] = {position: [longitude, latitude],
+                        value: value,
+                        name: name};
+        renderHeatmap();
+    };
+</script>
 </body>
 </html>
