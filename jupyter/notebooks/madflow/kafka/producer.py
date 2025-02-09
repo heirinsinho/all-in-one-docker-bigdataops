@@ -1,10 +1,17 @@
-from xml.etree import ElementTree
-from kafka import KafkaProducer
-from kafka.admin import KafkaAdminClient, NewTopic
 import concurrent.futures
-import time
-import requests
 import json
+import os
+import time
+from xml.etree import ElementTree
+
+import requests
+from kafka.admin import KafkaAdminClient, NewTopic
+
+from kafka import KafkaProducer
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 url_parkings_availability = "https://openapi.emtmadrid.es/v3/citymad/places/parkings/availability"
 url_traffic = "https://informo.madrid.es/informo/tmadrid/pm.xml"
@@ -15,8 +22,8 @@ def get_access_token():
     url = "https://openapi.emtmadrid.es/v2/mobilitylabs/user/login/"
 
     headers = {
-        "X-ClientId": "4614aca0-0a67-4bb9-b912-87b9bd62003c",
-        "passKey": "6D42B608EFDB34D1EE2623846AF4CFB3B88161A28C6CF6973D9569FA746757BF907C058CA211FD8F5787A918E928F30D82F0EFFE8F219F4A54BF53BA10549F06"
+        "X-ClientId": os.environ["X_CLIENT_ID"],
+        "passKey": os.environ["PASS_KEY"]
     }
 
     response = requests.request("GET", url, headers=headers)
@@ -97,6 +104,7 @@ def produce_messages(topic, getter_func):
             producer.flush()
             time.sleep(0.5)
 
+
 def create_kafka_topics(topic_names):
     client = KafkaAdminClient(bootstrap_servers="kafka:9092")
     new_topics = []
@@ -106,6 +114,7 @@ def create_kafka_topics(topic_names):
             new_topics.append(NewTopic(name=topic, num_partitions=1, replication_factor=1))
 
     client.create_topics(new_topics=new_topics, validate_only=False)
+
 
 def start_producers():
     with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -120,8 +129,7 @@ def start_producers():
 
 
 if __name__ == '__main__':
-
-    topic_names=["bicimad", "parkings", "traffic", "bicimad-output-stream",
-                 "parkings-output-stream", "traffic-output-stream", "madflow-output-stream"]
+    topic_names = ["bicimad", "parkings", "traffic", "bicimad-output-stream",
+                   "parkings-output-stream", "traffic-output-stream", "madflow-output-stream"]
     create_kafka_topics(topic_names)
     start_producers()

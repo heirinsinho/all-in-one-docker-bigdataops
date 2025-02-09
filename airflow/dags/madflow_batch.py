@@ -11,7 +11,6 @@ with (DAG('MadFlowBatch',
           catchup=False,
           max_active_tasks=5,
           max_active_runs=5) as dag):
-
     spark_batch_traffic_locations = SparkSubmitOperator(
         task_id='spark_batch_traffic_locations',
         conn_id='spark_docker',

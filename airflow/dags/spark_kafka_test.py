@@ -1,18 +1,18 @@
 import datetime
 import json
-from airflow import DAG
-from airflow.operators.python import PythonOperator
+
 from airflow.operators.empty import EmptyOperator
+from airflow.operators.python import PythonOperator
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 
+from airflow import DAG
 from utils.utils import hdfs_upload
 
 with DAG('SparkKafkaTest',
-        start_date=datetime.datetime(2024, 10, 1),
-        schedule_interval=None,
-        description='DAG that executes the ETL of spark and kafka',
-        catchup=False) as dag:
-
+         start_date=datetime.datetime(2024, 10, 1),
+         schedule_interval=None,
+         description='DAG that executes the ETL of spark and kafka',
+         catchup=False) as dag:
     metadata_filepath = "/opt/airflow/data/input/test/metadata.json"
     with open(metadata_filepath, "r") as json_file:
         metadata = json.load(json_file)

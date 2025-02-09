@@ -14,7 +14,6 @@ with (DAG('MadFlowStreaming',
           catchup=False,
           max_active_tasks=5,
           max_active_runs=5) as dag):
-
     create_kafka_topics = PythonOperator(
         task_id='create_kafka_topics',
         python_callable=create_kafka_topics,

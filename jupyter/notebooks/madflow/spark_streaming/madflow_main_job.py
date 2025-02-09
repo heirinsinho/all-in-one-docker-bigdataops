@@ -2,6 +2,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import StructType, StringType, FloatType
 
+
 spark = SparkSession \
     .builder \
     .master("spark://spark-master:7077") \
@@ -18,7 +19,7 @@ kafkaSchema = StructType() \
     .add("id", StringType()) \
     .add("occupancy", FloatType()) \
     .add("longitude", FloatType()) \
-    .add("latitude", FloatType()) \
+    .add("latitude", FloatType())
 
 static_poi = spark.read.parquet("hdfs://namenode:9000/madflow/poi")
 
@@ -60,18 +61,23 @@ kafka_traffic = kafka_traffic.select("parsed_value.*")
 
 # 0.58 is a factor of latitude correction cos(40.4º)^2.
 # This expression is equivalent to belong to a radius of 500m around the point
-cond1 = F.sqrt(0.58*F.pow(static_poi.longitude-kafka_traffic.longitude, 2) + F.pow(static_poi.latitude-kafka_traffic.latitude, 2)) < 0.0045
+cond1 = F.sqrt(0.58 * F.pow(static_poi.longitude - kafka_traffic.longitude, 2) + F.pow(
+    static_poi.latitude - kafka_traffic.latitude, 2)) < 0.0045
 df1 = static_poi.join(kafka_traffic, on=cond1).drop(kafka_traffic.longitude, kafka_traffic.latitude, kafka_traffic.id)
 
-cond2 = F.sqrt(0.58*F.pow(static_poi.longitude-kafka_parkings.longitude, 2) + F.pow(static_poi.latitude-kafka_parkings.latitude, 2)) < 0.0045
-df2 = static_poi.join(kafka_parkings, on=cond2).drop(kafka_parkings.longitude, kafka_parkings.latitude, kafka_parkings.id)
+cond2 = F.sqrt(0.58 * F.pow(static_poi.longitude - kafka_parkings.longitude, 2) + F.pow(
+    static_poi.latitude - kafka_parkings.latitude, 2)) < 0.0045
+df2 = static_poi.join(kafka_parkings, on=cond2).drop(kafka_parkings.longitude, kafka_parkings.latitude,
+                                                     kafka_parkings.id)
 
-cond3 = F.sqrt(0.58*F.pow(static_poi.longitude-kafka_bicimad.longitude, 2) + F.pow(static_poi.latitude-kafka_bicimad.latitude, 2)) < 0.0045
+cond3 = F.sqrt(0.58 * F.pow(static_poi.longitude - kafka_bicimad.longitude, 2) + F.pow(
+    static_poi.latitude - kafka_bicimad.latitude, 2)) < 0.0045
 df3 = static_poi.join(kafka_bicimad, on=cond3).drop(kafka_bicimad.longitude, kafka_bicimad.latitude, kafka_bicimad.id)
 
 df = df1.unionByName(df2).unionByName(df3)
 
-df = df.filter(df.occupancy.isNotNull()).groupBy("id", "name", "longitude", "latitude").agg(F.avg("occupancy").alias("occupancy"))
+df = df.filter(df.occupancy.isNotNull()).groupBy("id", "name", "longitude", "latitude").agg(
+    F.avg("occupancy").alias("occupancy"))
 
 queryToKafka = df \
     .select(F.to_json(F.struct("id", "name", "longitude", "latitude", "occupancy")).alias("value")) \

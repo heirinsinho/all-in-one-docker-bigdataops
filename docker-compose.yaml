@@ -173,6 +173,8 @@ services:
       - ./airflow/data:/opt/airflow/data
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/airflow.cfg:/opt/airflow/airflow.cfg
+      - .env.madflow:/opt/airflow/dags/.env
+
 
   jupyter:
     platform: linux/amd64
@@ -188,6 +190,7 @@ services:
     volumes:
       - ./jupyter/notebooks:/home/jovyan/notebooks
       - ./jupyter/data:/home/jovyan/data
+      - .env.madflow:/home/jovyan/notebooks/madflow/.env
 
   postgres:
     image: postgres:16

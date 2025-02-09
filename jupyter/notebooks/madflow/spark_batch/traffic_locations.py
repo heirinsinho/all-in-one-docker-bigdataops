@@ -60,9 +60,11 @@ def process_csv(url):
         temp_df = temp_df.selectExpr("id", "nombre as name", "longitud as longitude", "latitud as latitude").withColumn(
             "csv_index", F.lit(i))
         temp_df = temp_df.withColumn("longitude", F.regexp_replace("longitude", "\.", "")).withColumn("longitude",
-           F.expr("concat(substr(longitude, 1, 2), '.', substr(longitude, 3))"))
+                                                                                                      F.expr(
+                                                                                                          "concat(substr(longitude, 1, 2), '.', substr(longitude, 3))"))
         temp_df = temp_df.withColumn("latitude", F.regexp_replace("latitude", "\.", "")).withColumn("latitude",
-            F.expr("concat(substr(latitude, 1, 2), '.', substr(latitude, 3))"))
+                                                                                                    F.expr(
+                                                                                                        "concat(substr(latitude, 1, 2), '.', substr(latitude, 3))"))
         temp_df = temp_df.withColumn("longitude", F.col("longitude").cast("double"))
         temp_df = temp_df.withColumn("latitude", F.col("latitude").cast("double"))
 

@@ -5,7 +5,6 @@ from pyspark.sql import functions as F
 
 
 def main(df):
-
     df_lines = df.withColumn("line_key", F.when(F.col("origin") < F.col("destination"),
                                                 F.concat_ws("-", F.col("origin"), F.col("destination")))
                              .otherwise(F.concat_ws("-", F.col("destination"), F.col("origin"))))

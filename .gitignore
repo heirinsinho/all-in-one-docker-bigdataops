@@ -173,3 +173,6 @@ cython_debug/
 /postgres/data/
 mobilitylabs.env
 /jupyter/notebooks/madflow/traffic/*
+*.env.madflow
+*.env.local.madflow
+/NULL

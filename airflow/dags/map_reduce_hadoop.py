@@ -1,10 +1,9 @@
 import datetime
 
-from airflow import DAG
+from airflow.contrib.operators.ssh_operator import SSHOperator
 from airflow.operators.python import PythonOperator
 
-from airflow.contrib.operators.ssh_operator import SSHOperator
-
+from airflow import DAG
 from utils.utils import hdfs_upload
 
 with DAG('MapReduceHadoop',

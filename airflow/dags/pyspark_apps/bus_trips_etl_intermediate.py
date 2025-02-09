@@ -2,12 +2,10 @@ import argparse
 
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
-
 from pyspark.sql.window import Window
 
 
 def main(df):
-
     # Filter for only regular services
     df = df.filter(F.col("trip_type") == "regular")
 

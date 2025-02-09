@@ -1,8 +1,8 @@
 import argparse
+import json
 
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, current_timestamp, when, concat_ws, lit, to_json, struct
-import json
 
 
 class TestETL:

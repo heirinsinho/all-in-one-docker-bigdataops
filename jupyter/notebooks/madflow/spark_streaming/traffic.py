@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
-from pyspark.sql.types import StructType, StringType, IntegerType
+from pyspark.sql.types import StructType, StringType
 
 spark = SparkSession \
     .builder \
@@ -38,7 +38,8 @@ locations = spark.read.parquet("hdfs://namenode:9000/madflow/traffic/locations")
 traffic_history = spark.read.parquet("hdfs://namenode:9000/madflow/traffic/history")
 traffic_history = (traffic_history
                    .filter(F.col("month") == F.month(F.current_timestamp())))
-traffic_history = traffic_history.withColumn("diff_hour", F.abs(F.hour(F.col("datetime")) - F.hour(F.current_timestamp())))
+traffic_history = traffic_history.withColumn("diff_hour",
+                                             F.abs(F.hour(F.col("datetime")) - F.hour(F.current_timestamp())))
 traffic_history = traffic_history.filter(F.abs(F.col("diff_hour")) <= 1)
 
 grouped_traffic_history = traffic_history.groupBy("id").agg(F.max("intensity").alias("intensity_max"))
@@ -47,9 +48,8 @@ grouped_traffic_history = traffic_history.groupBy("id").agg(F.max("intensity").a
 df = kafka_traffic.join(locations, on="id", how="inner")
 df = df.join(grouped_traffic_history, on="id", how="inner")
 
-df = df.withColumn("occupancy", F.col("intensity")/F.col("intensity_max"))
+df = df.withColumn("occupancy", F.col("intensity") / F.col("intensity_max"))
 df = df.withColumn("occupancy", F.when(F.col("occupancy") > 1, 1).otherwise(F.col("occupancy")))
-
 
 queryToKafka = df \
     .select(df["id"].cast('string').alias("key"),

@@ -82,7 +82,7 @@
     </property>
     <property>
         <name>hive.metastore.schema.verification.record.version</name>
-         <value>false</value>
+        <value>false</value>
     </property>
     <property>
         <name>datanucleus.schema.autoCreateAll</name>

@@ -1,14 +1,14 @@
 import datetime
-from airflow import DAG
+
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 
+from airflow import DAG
 
 with DAG('SparkBusTrips',
          start_date=datetime.datetime(2024, 10, 1),
          schedule_interval=None,
          description='DAG that executes the ETL of spark for the BusTrips data',
          catchup=False) as dag:
-
     intermediate = SparkSubmitOperator(
         task_id='intermediate',
         conn_id='spark_docker',

@@ -39,7 +39,7 @@ static_df = spark.read.parquet("hdfs://namenode:9000/madflow/parkings/details")
 
 df = df.filter(F.col("free_slots").isNotNull())
 df = df.join(static_df, on="id")
-df = df.withColumn("occupancy", 1-(F.col("free_slots")/F.col("total_slots")))
+df = df.withColumn("occupancy", 1 - (F.col("free_slots") / F.col("total_slots")))
 
 queryToKafka = df \
     .select(df["id"].cast('string').alias("key"),

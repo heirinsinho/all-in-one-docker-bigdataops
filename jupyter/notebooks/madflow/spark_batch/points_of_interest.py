@@ -1,13 +1,19 @@
 import requests
+import os
+
 from pyspark.sql import SparkSession
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def get_access_token():
     url_login = "https://openapi.emtmadrid.es/v2/mobilitylabs/user/login/"
 
     headers = {
-        'X-ClientId': "4614aca0-0a67-4bb9-b912-87b9bd62003c",
-        'passKey': "6D42B608EFDB34D1EE2623846AF4CFB3B88161A28C6CF6973D9569FA746757BF907C058CA211FD8F5787A918E928F30D82F0EFFE8F219F4A54BF53BA10549F06"
+        'X-ClientId': os.environ["X_CLIENT_ID"],
+        'passKey': os.environ["PASS_KEY"]
     }
 
     res = requests.get(url_login, headers=headers)

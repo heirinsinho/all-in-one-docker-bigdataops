@@ -17,7 +17,6 @@ def get_dashboard():
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
-
     topic = os.environ["KAFKA_TOPIC"]
     host = os.environ["KAFKA_HOST"]
     port = os.environ["KAFKA_PORT"]
@@ -37,7 +36,6 @@ async def websocket_endpoint(websocket: WebSocket):
 
 
 if __name__ == '__main__':
-
     os.environ["KAFKA_TOPIC"] = "madflow-output-stream"
     os.environ["KAFKA_HOST"] = "localhost"
     os.environ["KAFKA_PORT"] = "9094"
